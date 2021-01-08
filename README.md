@@ -2,6 +2,6 @@
 
 CMSC388T Winter 21
 
-Shane Mehr
-Daniel Kyung
-Lydia Hancock
+Shane Mehr  
+Daniel Kyung  
+Lydia Hancock  
