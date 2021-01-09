@@ -51,11 +51,38 @@ public class Map{
 	public boolean isGameOver() {
 		return gameOver;
 	}
-		
+	
 	public boolean move(String name, Location loc, Type type) {
 		//update locations, components, and field
 		//use the setLocation method for the component to move it to the new location
-		return false;
+		
+		if (!locations.containsKey(name)) {
+			return false;						
+		}
+		
+		if (!components.containsKey(name)) {
+			return false;
+		}
+		
+		if (!field.containsKey(loc)) {
+			return false;
+		}
+		
+		/* will be used to update field variable */
+		Location currLoc = locations.get(name);
+		
+		/* updating locations */
+		locations.put(name, loc);
+		
+		/* updating components */
+		JComponent currComp = components.get(name);
+		currComp.setLocation(loc.x, loc.y);
+		
+		/* updating field */
+		field.get(currLoc).remove(type);
+		field.get(loc).add(type);
+		
+		return true;
 	}
 	
 	public HashSet<Type> getLoc(Location loc) {
