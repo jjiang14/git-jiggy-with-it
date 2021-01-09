@@ -52,9 +52,10 @@ public class Map{
 		return gameOver;
 	}
 	
+	/* moves the object specified by name to the location specified by loc 
+	 * on success returns true 
+	 * otherwise returns false */
 	public boolean move(String name, Location loc, Type type) {
-		//update locations, components, and field
-		//use the setLocation method for the component to move it to the new location
 		
 		if (!locations.containsKey(name)) {
 			return false;						
