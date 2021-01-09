@@ -12,6 +12,13 @@ public class Ghost{
 		this.myMap = map;
 	}
 
+	/* Returns an arraylist of Locations that represent valid moves 
+	 * that a ghost is able to make given their current location
+	 * If there are no valid moves an empty arraylist is returned. 
+	 * Valid moves include: 
+	 * any Location with Map.Type.COOKIE 
+	 * any location with Map.Type.EMPTY 
+	 * any location with Map.Type.PACMAN */
 	public ArrayList<Location> get_valid_moves() {
 		ArrayList<Location> listValidMoves = new ArrayList<Location>();
 		int xCoor = myLoc.x;
@@ -21,7 +28,7 @@ public class Ghost{
 		Location locLeft = new Location(xCoor - 1, yCoor);
 		HashSet<Map.Type> hashSet = myMap.getLoc(locLeft);
 		/* move left on map possible */
-		if (hashSet != null && !hashSet.contains(Map.Type.WALL)) {
+		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
 			listValidMoves.add(locLeft);
 		}
 		
@@ -29,7 +36,7 @@ public class Ghost{
 		Location locRight = new Location(xCoor + 1, yCoor);
 		hashSet = myMap.getLoc(locRight);
 		/* move right on map possible */
-		if (hashSet != null && !hashSet.contains(Map.Type.WALL)) {
+		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
 			listValidMoves.add(locRight);
 		}
 		
@@ -37,7 +44,7 @@ public class Ghost{
 		Location locAbove  = new Location(xCoor, yCoor - 1);
 		hashSet = myMap.getLoc(locAbove);
 		/* move up on map possible */
-		if (hashSet != null && !hashSet.contains(Map.Type.WALL)) {
+		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
 			listValidMoves.add(locAbove);
 		}
 		
@@ -45,7 +52,7 @@ public class Ghost{
 		Location locBelow = new Location(xCoor, yCoor + 1);
 		hashSet = myMap.getLoc(locBelow);
 		/* move down on map possible */
-		if (hashSet != null && !hashSet.contains(Map.Type.WALL)) {
+		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
 			listValidMoves.add(locBelow);
 		}
 		

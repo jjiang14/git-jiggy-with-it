@@ -38,8 +38,7 @@ public class TestGhostValidMoves extends TestCase {
 	}
 	
 	/* Testing get_valid_moves with three walls */
-	public void testPacManValidMoves_3Walls() throws FileNotFoundException {
-
+	public void testGhostValidMoves_3Walls() throws FileNotFoundException {
 		/* creating test map */
 		Map map_3Walls = new Map(3);
 		/* creating location objects */
@@ -65,8 +64,7 @@ public class TestGhostValidMoves extends TestCase {
 	}
 	
 	/* Testing get_valid_moves with three ghosts and one pacman */
-	public void testPacManValidMoves_3ghost() throws FileNotFoundException {
-
+	public void testGhostValidMoves_3ghost() throws FileNotFoundException {
 		/* creating test map */
 		Map map_3ghost = new Map(3);
 		/* creating location objects */
@@ -85,10 +83,7 @@ public class TestGhostValidMoves extends TestCase {
 
 		ArrayList<Location> returnedList = ghost_3ghost.get_valid_moves();
 		
-		assertTrue(returnedList.size() == 4);
-		assertTrue(returnedList.contains(locAbove));
-		assertTrue(returnedList.contains(locLeft));
-		assertTrue(returnedList.contains(locBelow));
+		assertTrue(returnedList.size() == 1);
 		assertTrue(returnedList.contains(locRight));			
 
 		return;
@@ -96,7 +91,6 @@ public class TestGhostValidMoves extends TestCase {
 	
 	/* Testing get_valid_moves with two ghosts and one cookie */
 	public void testPacManValidMoves_2ghost1cookie() throws FileNotFoundException {
-
 		/* creating test map */
 		Map map_2ghost1cookie = new Map(3);
 		/* creating location objects */
@@ -115,9 +109,7 @@ public class TestGhostValidMoves extends TestCase {
 
 		ArrayList<Location> returnedList = ghost_2ghost1cookie.get_valid_moves();
 		
-		assertTrue(returnedList.size() == 4);
-		assertTrue(returnedList.contains(locAbove));
-		assertTrue(returnedList.contains(locLeft));
+		assertTrue(returnedList.size() == 2);
 		assertTrue(returnedList.contains(locBelow));
 		assertTrue(returnedList.contains(locRight));			
 
