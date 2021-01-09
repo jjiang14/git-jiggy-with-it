@@ -53,8 +53,10 @@ public class Map{
 	}
 	
 	/* moves the object specified by name to the location specified by loc 
-	 * on success returns true 
+	 * on success returns true, 
 	 * otherwise returns false */
+	/* NOTE: It is assumed that the caller of this function will be passing in a valid Location, 
+	 * therefore no validation check for loc is required */
 	public boolean move(String name, Location loc, Type type) {
 		
 		if (!locations.containsKey(name)) {
