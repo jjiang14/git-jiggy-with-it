@@ -22,6 +22,7 @@ public class Ghost{
 			return false;
 		}
 		this.myLoc = move_list.get(0);
+		myMap.move(this.myName, this.myLoc, Map.Type.GHOST);
 		return true;
 	}
 
