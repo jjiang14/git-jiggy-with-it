@@ -4,115 +4,171 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class TestGhostValidMoves extends TestCase {
-
-	/* Testing get_valid_moves with zero walls */
+	
+	/* Testing get_valid_moves when a GHOST has zero adjacent WALLs */
 	public void testGhostValidMoves_0Walls() throws FileNotFoundException {
 		/* Assuming that getLoc in Map class is correctly implemented */
-		// TODO: add Map-getLoc() code once available
+		// TODO: add Map-getLoc() code once available or test more rigorously
 
 		/* creating test map */
 		Map map_0Walls = new Map(3);
-		/* creating location objects */
-		Location locAbove = new Location(1, 0);
-		map_0Walls.add("empty", locAbove, new WallComponent(1, 0, 20), Map.Type.EMPTY);
-		Location locLeft = new Location(0, 1);
-		map_0Walls.add("empty", locLeft, new WallComponent(0, 1, 20), Map.Type.EMPTY);
-		Location locBelow = new Location(1, 2);
-		map_0Walls.add("empty", locBelow, new WallComponent(1, 2, 20), Map.Type.EMPTY);
-		Location locRight = new Location(2, 1);
-		map_0Walls.add("empty", locRight, new WallComponent(2, 1, 20), Map.Type.EMPTY);
 		
+		/* will be used for setting and adding a ghost to the map */
 		Location locGhost = new Location(1, 1);
 		Ghost ghost_0Walls = new Ghost("ghost", locGhost, map_0Walls);
-		map_0Walls.add("ghost", locGhost, new GhostComponent(1, 1, Color.orange, 20), Map.Type.GHOST);
+
+		/* will be used for testing against returned list from function call */
+		ArrayList<Location> locList = new ArrayList<Location>();
+		
+		for (int row = 0; row < 3; row++) { 
+			for (int col = 0; col < 3; col++) {
+				Location loc = new Location(row, col);
+				locList.add(loc);
+				
+				/* setting ghost */
+				if (row == 1 && col == 1) {
+					map_0Walls.add("ghost", locGhost, new GhostComponent(row, col, 20), Map.Type.GHOST);
+					continue;
+				} 
+				/* using WallComponent because get_valid_moves is setup to check the 
+				 * Map.Type at all surrounding locations of an object */
+				map_0Walls.add("empty", loc, new WallComponent(row, col, 20), Map.Type.EMPTY);
+				
+			}
+			
+		}
 
 		ArrayList<Location> returnedList = ghost_0Walls.get_valid_moves();
 		
-		assertTrue(returnedList.size() == 4);
-		assertTrue(returnedList.contains(locAbove));
-		assertTrue(returnedList.contains(locLeft));
-		assertTrue(returnedList.contains(locBelow));
-		assertTrue(returnedList.contains(locRight));		
-
+		assertTrue(returnedList.size() == 8);
+		assertTrue(locList.equals(returnedList));
+		
 		return;
 	}
 	
-	/* Testing get_valid_moves with three walls */
-	public void testGhostValidMoves_3Walls() throws FileNotFoundException {
+	/* Testing get_valid_moves when a GHOST has one EMPTY and seven WALLs adjacent to it */
+	public void testGhostValidMoves_7Walls() throws FileNotFoundException {
 		/* creating test map */
-		Map map_3Walls = new Map(3);
-		/* creating location objects */
-		Location locAbove = new Location(1, 0);
-		map_3Walls.add("wall", locAbove, new WallComponent(1, 0, 20), Map.Type.WALL);
-		Location locLeft = new Location(0, 1);
-		map_3Walls.add("wall", locLeft, new WallComponent(0, 1, 20), Map.Type.WALL);
-		Location locBelow = new Location(1, 2);
-		map_3Walls.add("wall", locBelow, new WallComponent(1, 2, 20), Map.Type.WALL);
-		Location locRight = new Location(2, 1);
-		map_3Walls.add("empty", locRight, new WallComponent(2, 1, 20), Map.Type.EMPTY);
+		Map map_7Walls = new Map(3);
 		
+		/* will be used for setting and adding a ghost to the map */
 		Location locGhost = new Location(1, 1);
-		Ghost ghost_3Walls = new Ghost("ghost", locGhost, map_3Walls);
-		map_3Walls.add("ghost", locGhost, new GhostComponent(1, 1, Color.orange, 20), Map.Type.GHOST);
+		Ghost ghost_7Walls = new Ghost("ghost", locGhost, map_7Walls);
+		
+		/* will be used for testing against returned list from function call */
+		ArrayList<Location> locList = new ArrayList<Location>();
 
-		ArrayList<Location> returnedList = ghost_3Walls.get_valid_moves();
+		for (int row = 0; row < 3; row++) { 
+			for (int col = 0; col < 3; col++) {
+				Location loc = new Location(row, col);
+				
+				/* setting ghost */
+				if (row == 1 && col == 1) {
+					map_7Walls.add("ghost", locGhost, new GhostComponent(row, col, 20), Map.Type.GHOST);
+					continue;
+				} else if (row == 1 && col == 2) {
+					map_7Walls.add("empty", loc, new WallComponent(row, col, 20), Map.Type.EMPTY);
+					locList.add(loc);
+					continue;
+				}
+				/* using WallComponent because get_valid_moves is setup to check the 
+				 * Map.Type at all surrounding locations of an object */
+				map_7Walls.add("wall", loc, new WallComponent(row, col, 20), Map.Type.WALL);
+			}
+		}
+
+		ArrayList<Location> returnedList = ghost_7Walls.get_valid_moves();
 		
 		assertTrue(returnedList.size() == 1);
-		assertTrue(returnedList.contains(locRight));		
+		assertTrue(locList.equals(returnedList));
 
 		return;
 	}
 	
-	/* Testing get_valid_moves with three ghosts and one pacman */
-	public void testGhostValidMoves_3ghost() throws FileNotFoundException {
+	/* Testing get_valid_moves when a GHOST has three GHOSTs, a PACMAN, and three WALLs adjacent to it */
+	public void testGhostValidMoves_3ghost1Pacman() throws FileNotFoundException {
 		/* creating test map */
-		Map map_3ghost = new Map(3);
-		/* creating location objects */
-		Location locAbove = new Location(1, 0);
-		map_3ghost.add("ghost", locAbove, new WallComponent(1, 0, 20), Map.Type.GHOST);
-		Location locLeft = new Location(0, 1);
-		map_3ghost.add("ghost", locLeft, new WallComponent(0, 1, 20), Map.Type.GHOST);
-		Location locBelow = new Location(1, 2);
-		map_3ghost.add("ghost", locBelow, new WallComponent(1, 2, 20), Map.Type.GHOST);
-		Location locRight = new Location(2, 1);
-		map_3ghost.add("pacman", locRight, new PacManComponent(2, 1, 20), Map.Type.PACMAN);
+		Map map_3ghost1Pacman = new Map(3);
 		
+		/* will be used for setting and adding a ghost to the map */
 		Location locGhost = new Location(1, 1);
-		Ghost ghost_3ghost = new Ghost("ghost", locGhost, map_3ghost);
-		map_3ghost.add("ghost", locGhost, new GhostComponent(1, 1, Color.orange, 20), Map.Type.GHOST);
-
-		ArrayList<Location> returnedList = ghost_3ghost.get_valid_moves();
+		Ghost ghost_3ghost1Pacman = new Ghost("ghost", locGhost, map_3ghost1Pacman);
 		
-		assertTrue(returnedList.size() == 1);
-		assertTrue(returnedList.contains(locRight));			
+		/* will be used for adding Pacman to the map */
+		Location locPacman = new Location(0, 1);
+		
+		/* will be used for testing against returned list from function call */
+		ArrayList<Location> locList = new ArrayList<Location>();
+
+		for (int row = 0; row < 3; row++) { 
+			for (int col = 0; col < 3; col++) {
+				Location loc = new Location(row, col);
+				
+				/* setting pacman */
+				if (row == 2 && col == 1) {
+					map_3ghost1Pacman.add("pacman", locPacman, new PacManComponent(row, col, 20), Map.Type.PACMAN);
+					locList.add(loc);
+					continue;
+				} else if (row == 0) {
+					map_3ghost1Pacman.add("ghost", loc, new GhostComponent(row, col, 20), Map.Type.GHOST);
+					continue;
+				} else if (row == 1 && col == 1) {
+					map_3ghost1Pacman.add("ghost", locGhost, new GhostComponent(row, col, 20), Map.Type.GHOST);
+					locList.add(loc);
+					continue;
+				}
+				/* using WallComponent because get_valid_moves is setup to check the 
+				 * Map.Type at all surrounding locations of an object */
+				map_3ghost1Pacman.add("empty", loc, new WallComponent(row, col, 20), Map.Type.EMPTY);
+				locList.add(loc);
+			}
+		}
+
+		ArrayList<Location> returnedList = ghost_3ghost1Pacman.get_valid_moves();
+		
+		assertTrue(returnedList.size() == 5);
+		assertTrue(locList.equals(returnedList));
 
 		return;
 	}
 	
-	/* Testing get_valid_moves with two ghosts and one cookie */
-	public void testPacManValidMoves_2ghost1cookie() throws FileNotFoundException {
+	/* Testing get_valid_moves when a GHOST has three GHOSTs and five COOKIEs adjacent to it */
+	public void testGhostValidMoves_3ghost5cookie() throws FileNotFoundException {
 		/* creating test map */
-		Map map_2ghost1cookie = new Map(3);
-		/* creating location objects */
-		Location locAbove = new Location(1, 0);
-		map_2ghost1cookie.add("ghost", locAbove, new WallComponent(1, 0, 20), Map.Type.GHOST);
-		Location locLeft = new Location(0, 1);
-		map_2ghost1cookie.add("ghost", locLeft, new WallComponent(0, 1, 20), Map.Type.GHOST);
-		Location locBelow = new Location(1, 2);
-		map_2ghost1cookie.add("cookie", locBelow, new WallComponent(1, 2, 20), Map.Type.COOKIE);
-		Location locRight = new Location(2, 1);
-		map_2ghost1cookie.add("empty", locRight, new WallComponent(2, 1, 20), Map.Type.EMPTY);
+		Map map_3ghost5cookie = new Map(3);
 		
+		/* will be used for setting and adding a ghost to the map */
 		Location locGhost = new Location(1, 1);
-		Ghost ghost_2ghost1cookie = new Ghost("ghost", locGhost, map_2ghost1cookie);
-		map_2ghost1cookie.add("ghost", locGhost, new GhostComponent(1, 1, Color.orange, 20), Map.Type.GHOST);
-
-		ArrayList<Location> returnedList = ghost_2ghost1cookie.get_valid_moves();
+		Ghost ghost_3ghost5cookie = new Ghost("ghost", locGhost, map_3ghost5cookie);
 		
-		assertTrue(returnedList.size() == 2);
-		assertTrue(returnedList.contains(locBelow));
-		assertTrue(returnedList.contains(locRight));			
+		/* will be used for testing against returned list from function call */
+		ArrayList<Location> locList = new ArrayList<Location>();
+
+		for (int row = 0; row < 3; row++) { 
+			for (int col = 0; col < 3; col++) {
+				Location loc = new Location(row, col);
+				
+				/* setting ghost */
+				if (row == 1 && col == 1) {
+					map_3ghost5cookie.add("ghost", locGhost, new GhostComponent(row, col, 20), Map.Type.GHOST);
+					continue;
+				} else if (row == 0) {
+					map_3ghost5cookie.add("ghost", loc, new GhostComponent(row, col, 20), Map.Type.GHOST);
+					continue;
+				}
+				/* using WallComponent because get_valid_moves is setup to check the 
+				 * Map.Type at all surrounding locations of an object */
+				map_3ghost5cookie.add("cookie", loc, new CookieComponent(row, col, 20), Map.Type.COOKIE);
+				locList.add(loc);
+			}
+		}
+
+		ArrayList<Location> returnedList = ghost_3ghost5cookie.get_valid_moves();
+		
+		assertTrue(returnedList.size() == 5);
+		assertTrue(locList.equals(returnedList));
 
 		return;
 	}
+	
 }
