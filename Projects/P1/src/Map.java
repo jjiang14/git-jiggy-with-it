@@ -64,22 +64,24 @@ public class Map{
 	}
 
 	public boolean attack(String Name) {
-		/* gets the location of Ghost with matching Name */
-		Location ghost_loc = locations.get(Name);
-		if (ghost_loc != null) {
-			Map ghost_map = this;
-			/* creates a temporary Ghost which will then call the Ghost.attack() method */
-			Ghost temp = new Ghost(Name, ghost_loc, ghost_map);
-			if (temp.attack() == true) {
-				/* if attack is successful update gameOver to true and return true */
+		/* checks to make sure pacman is present on the map */
+		Location pac_loc;
+		if (locations.containsKey("pacman")) {
+			/* gets pacman's location */
+			pac_loc = locations.get("pacman");
+		} else {
+			return false;
+		}
+		/* moves the ghost to pacman's location */
+		if (move(Name, pac_loc, Map.Type.GHOST) == true) {
+			/* if the ghost successfully moves to pacman's position, check to make sure both pacman and ghost are at that coordinate */
+			if (field.get(pac_loc).contains(Map.Type.PACMAN) && field.get(pac_loc).contains(Map.Type.GHOST)) {
+				/* update gameOver and return true */
 				gameOver = true;
 				return true;
-			} else {
-				/* if attack is unsuccessful leave gameOver as false and return false */
-				return false;
 			}
 		}
-		/* if no Ghost was found with matching Name then return false */
+		/* if the attack was not successful return false */
 		return false;
 	}
 	
