@@ -64,7 +64,22 @@ public class Map{
 	}
 
 	public boolean attack(String Name) {
-		//update gameOver
+		/* gets the location of Ghost with matching Name */
+		Location ghost_loc = locations.get(Name);
+		if (ghost_loc != null) {
+			Map ghost_map = this;
+			/* creates a temporary Ghost which will then call the Ghost.attack() method */
+			Ghost temp = new Ghost(Name, ghost_loc, ghost_map);
+			if (temp.attack() == true) {
+				/* if attack is successful update gameOver to true and return true */
+				gameOver = true;
+				return true;
+			} else {
+				/* if attack is unsuccessful leave gameOver as false and return false */
+				return false;
+			}
+		}
+		/* if no Ghost was found with matching Name then return false */
 		return false;
 	}
 	
