@@ -56,6 +56,38 @@ public class Ghost{
 			listValidMoves.add(locBelow);
 		}
 		
+		/* checking type in field - left upper corner of current location */
+		Location locLeftUpper = new Location(xCoor - 1, yCoor - 1);
+		hashSet = myMap.getLoc(locLeftUpper);
+		/* move to left upper corner on map possible */
+		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
+			listValidMoves.add(locLeftUpper);
+		}
+		
+		/* checking type in field - right upper corner of current location */
+		Location locRightUpper = new Location(xCoor + 1, yCoor - 1);
+		hashSet = myMap.getLoc(locRightUpper);
+		/* move to left upper corner on map possible */
+		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
+			listValidMoves.add(locRightUpper);
+		}
+		
+		/* checking type in field - left lower corner of current location */
+		Location locLeftLower = new Location(xCoor - 1, yCoor + 1);
+		hashSet = myMap.getLoc(locLeftLower);
+		/* move to left upper corner on map possible */
+		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
+			listValidMoves.add(locLeftLower);
+		}
+		
+		/* checking type in field - right lower corner of current location */
+		Location locRightLower = new Location(xCoor + 1, yCoor + 1);
+		hashSet = myMap.getLoc(locRightLower);
+		/* move to left upper corner on map possible */
+		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
+			listValidMoves.add(locRightLower);
+		}
+		
 		return listValidMoves;	
 	}
 
