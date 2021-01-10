@@ -3,20 +3,6 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class TestPacManValidMoves extends TestCase {
-
-	/*
-	 * for (int row = 0; row < 3; row++) { for (int col = 0; col < 4; col++) {
-	 * Location loc = new Location(row, col); setting pacman if (row == 1 && col ==
-	 * 1 ) { map_3Walls.add("pacman", loc, new PacManComponent(1, 1, 20),
-	 * Map.Type.PACMAN);
-	 * 
-	 * setting cookie space } else if (row == 1 && col == 2) {
-	 * map_3Walls.add("cookie", loc, new CookieComponent(row, col, 20),
-	 * Map.Type.COOKIE);
-	 * 
-	 * setting wall } else { map_3Walls.add("wall", loc, new WallComponent(row, col,
-	 * 20), Map.Type.WALL); } } }
-	 */
 	
 	/* Testing get_valid_moves with zero walls */
 	public void testPacManValidMoves_0Walls() throws FileNotFoundException {
@@ -52,7 +38,6 @@ public class TestPacManValidMoves extends TestCase {
 	
 	/* Testing get_valid_moves with three walls */
 	public void testPacManValidMoves_3Walls() throws FileNotFoundException {
-
 		/* creating test map */
 		Map map_3Walls = new Map(3);
 		/* creating location objects */
@@ -79,7 +64,6 @@ public class TestPacManValidMoves extends TestCase {
 	
 	/* Testing get_valid_moves with three ghosts */
 	public void testPacManValidMoves_3ghost() throws FileNotFoundException {
-
 		/* creating test map */
 		Map map_3ghost = new Map(3);
 		/* creating location objects */
@@ -98,10 +82,7 @@ public class TestPacManValidMoves extends TestCase {
 
 		ArrayList<Location> returnedList = pac_3ghost.get_valid_moves();
 		
-		assertTrue(returnedList.size() == 4);
-		assertTrue(returnedList.contains(locAbove));
-		assertTrue(returnedList.contains(locLeft));
-		assertTrue(returnedList.contains(locBelow));
+		assertTrue(returnedList.size() == 1);
 		assertTrue(returnedList.contains(locRight));			
 
 		return;
@@ -109,7 +90,6 @@ public class TestPacManValidMoves extends TestCase {
 	
 	/* Testing get_valid_moves with two ghosts and one cookie */
 	public void testPacManValidMoves_2ghost1cookie() throws FileNotFoundException {
-
 		/* creating test map */
 		Map map_2ghost1cookie = new Map(3);
 		/* creating location objects */
@@ -128,9 +108,7 @@ public class TestPacManValidMoves extends TestCase {
 
 		ArrayList<Location> returnedList = pac_2ghost1cookie.get_valid_moves();
 		
-		assertTrue(returnedList.size() == 4);
-		assertTrue(returnedList.contains(locAbove));
-		assertTrue(returnedList.contains(locLeft));
+		assertTrue(returnedList.size() == 2);
 		assertTrue(returnedList.contains(locBelow));
 		assertTrue(returnedList.contains(locRight));			
 
