@@ -1,10 +1,6 @@
 import java.util.HashSet;
 import java.util.ArrayList;
 import javax.swing.JComponent;
-
-
-public class PacMan {
-
 import Map.Type;
 
 public class PacMan{
@@ -27,8 +23,6 @@ public class PacMan{
 	 * any Location with Map.Type.COOKIE 
 	 * any location with Map.Type.EMPTY */
 	public ArrayList<Location> get_valid_moves() {
-
-		return null;
 
 		ArrayList<Location> listValidMoves = new ArrayList<Location>();
 		int xCoor = myLoc.x;
