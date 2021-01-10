@@ -96,7 +96,7 @@ public class Map {
 		components.remove(cookieId);
 
 		// subtract cookie count by 1
-		cookies = cookies - 1;
+		// cookies = cookies - 1;
 
 		return cookie;
 	}
