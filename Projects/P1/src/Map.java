@@ -2,28 +2,24 @@ import java.util.HashMap;
 import java.util.HashSet;
 import javax.swing.JComponent;
 
-public class Map{
+public class Map {
 
 	public enum Type {
-		EMPTY,
-		PACMAN,
-		GHOST,
-		WALL,
-		COOKIE		
+		EMPTY, PACMAN, GHOST, WALL, COOKIE
 	}
-	
+
 	private HashMap<Location, HashSet<Type>> field;
 	private boolean gameOver;
 	private int dim;
 
 	private HashMap<String, Location> locations;
-	private HashMap<String, JComponent> components; 
+	private HashMap<String, JComponent> components;
 	private HashSet<Type> emptySet;
-	private HashSet<Type> wallSet; 
+	private HashSet<Type> wallSet;
 
 	private int cookies = 0;
 
-	public Map(int dim){
+	public Map(int dim) {
 		gameOver = false;
 		locations = new HashMap<String, Location>();
 		components = new HashMap<String, JComponent>();
@@ -36,41 +32,72 @@ public class Map{
 		this.dim = dim;
 	}
 
-
 	public void add(String name, Location loc, JComponent comp, Type type) {
 		locations.put(name, loc);
 		components.put(name, comp);
-		if (!field.containsKey(loc)) field.put(loc, new HashSet<Type>());
+		if (!field.containsKey(loc))
+			field.put(loc, new HashSet<Type>());
 		field.get(loc).add(type);
 	}
 
 	public int getCookies() {
 		return cookies;
 	}
-	
+
 	public boolean isGameOver() {
 		return gameOver;
 	}
-		
+
 	public boolean move(String name, Location loc, Type type) {
-		//update locations, components, and field
-		//use the setLocation method for the component to move it to the new location
+		// update locations, components, and field
+		// use the setLocation method for the component to move it to the new location
 		return false;
 	}
-	
+
 	public HashSet<Type> getLoc(Location loc) {
-		//wallSet and emptySet will help you write this method
+		// wallSet and emptySet will help you write this method
 		return null;
 	}
 
 	public boolean attack(String Name) {
-		//update gameOver
+		// update gameOver
 		return false;
 	}
-	
+
 	public JComponent eatCookie(String name) {
-		//update locations, components, field, and cookies
-		//the id for a cookie at (10, 1) is tok_x10_y1
-		return null;
+		// update locations, components, field, and cookies
+		// the id for a cookie at (10, 1) is tok_x10_y1
+
+		// get location of cookie
+		Location loc = locations.get(name);
+
+		if (loc == null) {
+			return null;
+		}
+
+		// remove cookie from field based on location
+		HashSet<Type> f = field.get(loc);
+
+		if (f.remove(Type.COOKIE) == false) {
+			return null;
+		}
+
+		// get cookie id
+		String cookieId = "tok_x" + loc.x + "_y" + loc.y;
+
+		// get JComponent of cookie
+		JComponent cookie = components.get(cookieId);
+
+		if (cookie == null) {
+			return null;
+		}
+
+		// remove cookie component
+		components.remove(cookieId);
+
+		// subtract cookie count by 1
+		cookies = cookies - 1;
+
+		return cookie;
 	}
 }
