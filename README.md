@@ -17,9 +17,14 @@
 ## API of Implemented Features
 
 ### PacMan Class
-1. get_valid_moves()
-   
-    - JUnit TestPacManValidMoves
+1. get_valid_moves()  
+This function takes in no arguments and returns an arraylist of Locations that represent valid moves that Pacman is 
+   able to make given his current location. If there are no valid moves an empty arraylist is returned.
+
+     - JUnit TestPacManValidMoves:  
+       Pacman's valid moves include - moving into a Location with a COOKIE or a Location that is EMPTY. Testing 
+       included creating a map with different types (i.e. COOKIE, WALL, GHOST, EMPTY, PACMAN) and evaluating the 
+       returned arraylist when a call to this function was made. 
 
 2. move()
    
@@ -30,10 +35,16 @@
 4. consume() 
 
 ### Ghost Class
-1. get_valid_moves()
+1. get_valid_moves()  
+This function takes in no arguments and returns an arraylist of Locations that represent valid moves that a Ghost is
+   able to make given their current location. If there are no valid moves an empty arraylist is returned.
 
-    - JUnit TestGhostValidMoves
+    - JUnit TestGhostValidMoves:<sup>*</sup>  
+      A Ghost's valid moves include - moving into a Location with a COOKIE or a Location that is EMPTY or a Location
+      containing Pacman. Testing included creating a map with different types (i.e. COOKIE, WALL, GHOST, EMPTY, PACMAN) 
+      and evaluating the returned arraylist when a call to this function was made.  
 
+        <sup>*</sup>Note: Only one ghost can occupy any one Location at any given time. 
 
 2. move()
 
@@ -44,9 +55,15 @@
 4. consume() 
 
 ### Map Class
-1. move(String name, Location loc, Type type)
+1. move(String name, Location loc, Type type)  
+This function takes in three arguments: a String, a Location, and a Type. This moves the object specified by name (String) 
+   to the Location specified by loc. This returns true on success, and false on failure. This a helper method to Pacman's 
+   and Ghost's move functions. 
 
-    - JUnit TestMapMove
+    - JUnit TestMapMove:  
+    Test cases were created with the assumption that valid arguments will be passed in from Pacman's and Ghost's call 
+      to this function. Testing included creating a map with different types (i.e. COOKIE, WALL, GHOST, EMPTY, PACMAN)
+      and checking the accuracy of the return value when a call to this function is made.   
 
 
 2. getLoc(Location loc)
