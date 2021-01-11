@@ -41,6 +41,19 @@ java -cp "src/" StartMenu
 ## API of Implemented Features
 
 ### PacMan Class
+
+<!-- TEMPLTE FOR CODE DESCRIPTIONS
+- **Type**: `(Location loc) -> HashSet<Type>`
+- **Description**: 
+- **Returns**: 
+- **Example**:
+  ```java
+  //pacman and ghost at location (1,1)
+  map.getLoc(new Location (1,1)) -> {Map.Type.PACMAN, Map.Type.GHOST}
+  ```
+- **Test Description**:
+-->
+
 #### get_valid_moves()
 This function takes in no arguments and returns an arraylist of Locations that represent valid moves that Pacman is 
    able to make given his current location. If there are no valid moves an empty arraylist is returned.
