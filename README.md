@@ -38,7 +38,8 @@ This function takes in no arguments and returns an arraylist of Locations that r
 4. consume(): 
 This function takes in no arguments and returns a Cookie component if pacman successfully eats a cookie. This method checks if cookie exists in pacman's             location, if true then returns a Map class method eatCookie(pacman name) which returns a component, otherwise returns null. 
    
-   - JUnit TestGhostValidMoves:  
+   - JUnit TestConsume:
+     This test checks if pacman is able to successfully able to consume a cookie in the pacman's location. After setting the cookie and pacman in the same location, the consume method should return the cookie component. 
 
 ### Ghost Class
 1. get_valid_moves()  
@@ -62,7 +63,7 @@ This function takes in no arguments and returns an arraylist of Locations that r
 This function checks if a pacman is within the ghost's attack range using the is_pacman_in_range method that returns a boolean. If it returns true, then calls the attack method
 from Map class, otherwise returns false. 
 
-   -JUnit Test
+   - JUnit Test
       
 
 ### Map Class
