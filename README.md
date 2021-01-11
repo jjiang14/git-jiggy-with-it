@@ -138,12 +138,14 @@ This function takes in three arguments: a String, a Location, and a Type. This m
 
 #### getLoc(Location loc)
 - **Type**: `(Location loc) -> HashSet<Type>`
-- **Description**: 
-- **Returns**: 
+- **Description**: returns Type of what is currently at the loc argument (Empty, Pacman, Cookie, Ghost, Wall)
+- **Returns**: `HashSet<Type>` containing Type of all things at loc argument; a `HashSet<Type>` containing only `Map.Type.EMPTY` if nothing is at loc or containing only `Map.Type.WALL` if a wall is at loc
 - **Example**:
   ```java
   //pacman and ghost at location (1,1)
+  //wall and cookie at location (2, 1)
   map.getLoc(new Location (1,1)) -> {Map.Type.PACMAN, Map.Type.GHOST}
+  map.getLoc(new Location (2,1)) -> {Map.Type.WALL}
   ```
 - **Test Description**:
 
