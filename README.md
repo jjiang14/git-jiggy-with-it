@@ -2,5 +2,7 @@
 
 CMSC388T Winter 21
 
-Shane Mehr
-Daniel Kyung
+- Shane Mehr
+- Daniel Kyung
+- Ryan Shriver
+- Lydia Hancock
