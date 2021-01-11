@@ -1,14 +1,13 @@
 import junit.framework.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class TestPacManValidMoves extends TestCase {
 	
 	/* Testing get_valid_moves when Pacman has zero adjacent WALLs */
 	public void testPacManValidMoves_0Walls() throws FileNotFoundException {
-		/* Assuming that getLoc in Map class is correctly implemented */
-		// TODO: add Map-getLoc() code once available or test more rigorously
-
 		/* creating test map */
 		Map map_0Walls = new Map(3);
 		
@@ -17,12 +16,11 @@ public class TestPacManValidMoves extends TestCase {
 		PacMan pac_0Walls = new PacMan("pacman", locPacman, map_0Walls);
 
 		/* will be used for testing against returned list from function call */
-		ArrayList<Location> locList = new ArrayList<Location>();
+		List<Location> locList = new ArrayList<Location>();
 		
 		for (int row = 0; row < 3; row++) { 
 			for (int col = 0; col < 3; col++) {
 				Location loc = new Location(row, col);
-				locList.add(loc);
 				
 				/* setting pacman */
 				if (row == 1 && col == 1) {
@@ -32,14 +30,27 @@ public class TestPacManValidMoves extends TestCase {
 				/* using WallComponent because get_valid_moves is setup to check the 
 				 * Map.Type at all surrounding locations of an object */
 				map_0Walls.add("empty", loc, new WallComponent(row, col, 20), Map.Type.EMPTY);
-				
+				locList.add(loc);
 			}
 			
 		}
 
-		ArrayList<Location> returnedList = pac_0Walls.get_valid_moves();
+		List<Location> returnedList = pac_0Walls.get_valid_moves();
+		Collections.sort(locList);
+		Collections.sort(returnedList);
 		
-		assertTrue(returnedList.size() == 8);
+		/* printing out sorted locList */
+		for (Location loc:locList) {
+			System.out.println(loc);
+		}
+		System.out.println("Printing returnedList");
+		/* printing out sorted returnedList */
+		for (Location loc:returnedList) {
+			System.out.println(loc);
+		}
+		System.out.println();
+		
+		assertEquals(8, returnedList.size());
 		assertTrue(locList.equals(returnedList));
 		
 		return;
@@ -55,12 +66,11 @@ public class TestPacManValidMoves extends TestCase {
 		PacMan pac_7Walls = new PacMan("pacman", locPacman, map_7Walls);
 		
 		/* will be used for testing against returned list from function call */
-		ArrayList<Location> locList = new ArrayList<Location>();
+		List<Location> locList = new ArrayList<Location>();
 
 		for (int row = 0; row < 3; row++) { 
 			for (int col = 0; col < 3; col++) {
 				Location loc = new Location(row, col);
-				locList.add(loc);
 				
 				/* setting pacman */
 				if (row == 1 && col == 1) {
@@ -77,7 +87,9 @@ public class TestPacManValidMoves extends TestCase {
 			}
 		}
 
-		ArrayList<Location> returnedList = pac_7Walls.get_valid_moves();
+		List<Location> returnedList = pac_7Walls.get_valid_moves();
+		Collections.sort(locList);
+		Collections.sort(returnedList);
 		
 		assertTrue(returnedList.size() == 1);
 		assertTrue(locList.equals(returnedList));
@@ -95,7 +107,7 @@ public class TestPacManValidMoves extends TestCase {
 		PacMan pac_4ghost = new PacMan("pacman", locPacman, map_4ghost);
 		
 		/* will be used for testing against returned list from function call */
-		ArrayList<Location> locList = new ArrayList<Location>();
+		List<Location> locList = new ArrayList<Location>();
 
 		for (int row = 0; row < 3; row++) { 
 			for (int col = 0; col < 3; col++) {
@@ -119,7 +131,9 @@ public class TestPacManValidMoves extends TestCase {
 			}
 		}
 
-		ArrayList<Location> returnedList = pac_4ghost.get_valid_moves();
+		List<Location> returnedList = pac_4ghost.get_valid_moves();
+		Collections.sort(locList);
+		Collections.sort(returnedList);
 		
 		assertTrue(returnedList.size() == 1);
 		assertTrue(locList.equals(returnedList));
@@ -137,7 +151,7 @@ public class TestPacManValidMoves extends TestCase {
 		PacMan pac_4ghost1cookie = new PacMan("pacman", locPacman, map_4ghost1cookie);
 		
 		/* will be used for testing against returned list from function call */
-		ArrayList<Location> locList = new ArrayList<Location>();
+		List<Location> locList = new ArrayList<Location>();
 
 		for (int row = 0; row < 3; row++) { 
 			for (int col = 0; col < 3; col++) {
@@ -162,7 +176,9 @@ public class TestPacManValidMoves extends TestCase {
 			}
 		}
 
-		ArrayList<Location> returnedList = pac_4ghost1cookie.get_valid_moves();
+		List<Location> returnedList = pac_4ghost1cookie.get_valid_moves();
+		Collections.sort(locList);
+		Collections.sort(returnedList);
 		
 		assertTrue(returnedList.size() == 4);
 		assertTrue(locList.equals(returnedList));
