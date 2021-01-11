@@ -17,14 +17,10 @@ public class TestGhostMove extends TestCase {
 		/* will be used for setting and adding a ghost to the map */
 		Location locGhost = new Location(1, 1);
 		Ghost ghost_0Walls = new Ghost("ghost", locGhost, map_0Walls);
-
-		/* will be used for testing against returned list from function call */
-		ArrayList<Location> locList = new ArrayList<Location>();
 		
 		for (int row = 0; row < 3; row++) { 
 			for (int col = 0; col < 3; col++) {
 				Location loc = new Location(row, col);
-				locList.add(loc);
 				
 				/* setting ghost */
 				if (row == 1 && col == 1) {
@@ -57,8 +53,6 @@ public class TestGhostMove extends TestCase {
 		Location locGhost = new Location(1, 1);
 		Ghost ghost_7Walls = new Ghost("ghost", locGhost, map_7Walls);
 		
-		/* will be used for testing against returned list from function call */
-		ArrayList<Location> locList = new ArrayList<Location>();
 
 		for (int row = 0; row < 3; row++) { 
 			for (int col = 0; col < 3; col++) {
@@ -70,7 +64,6 @@ public class TestGhostMove extends TestCase {
 					continue;
 				} else if (row == 1 && col == 2) {
 					map_7Walls.add("empty", loc, new WallComponent(row, col, 20), Map.Type.EMPTY);
-					locList.add(loc);
 					continue;
 				}
 				/* using WallComponent because get_valid_moves is setup to check the 
@@ -97,11 +90,8 @@ public class TestGhostMove extends TestCase {
 		Location locGhost = new Location(1, 1);
 		Ghost ghost_3ghost1Pacman = new Ghost("ghost", locGhost, map_3ghost1Pacman);
 		
-		/* will be used for adding GHOST to the map */
+		/* will be used for adding Pacman to the map */
 		Location locPacman = new Location(0, 1);
-		
-		/* will be used for testing against returned list from function call */
-		ArrayList<Location> locList = new ArrayList<Location>();
 
 		for (int row = 0; row < 3; row++) { 
 			for (int col = 0; col < 3; col++) {
@@ -110,20 +100,17 @@ public class TestGhostMove extends TestCase {
 				/* setting GHOST */
 				if (row == 2 && col == 1) {
 					map_3ghost1Pacman.add("pacman", locPacman, new PacmanComponent(row, col, 20), Map.Type.PACMAN);
-					locList.add(loc);
 					continue;
 				} else if (row == 0) {
 					map_3ghost1Pacman.add("ghost", loc, new GhostComponent(row, col, 20), Map.Type.GHOST);
 					continue;
 				} else if (row == 1 && col == 1) {
 					map_3ghost1Pacman.add("ghost", locGhost, new GhostComponent(row, col, 20), Map.Type.GHOST);
-					locList.add(loc);
 					continue;
 				}
 				/* using WallComponent because get_valid_moves is setup to check the 
 				 * Map.Type at all surrounding locations of an object */
 				map_3ghost1Pacman.add("empty", loc, new WallComponent(row, col, 20), Map.Type.EMPTY);
-				locList.add(loc);
 			}
 		}
 
@@ -144,9 +131,6 @@ public class TestGhostMove extends TestCase {
 		/* will be used for setting and adding a ghost to the map */
 		Location locGhost = new Location(1, 1);
 		Ghost ghost_3ghost5cookie = new Ghost("ghost", locGhost, map_3ghost5cookie);
-		
-		/* will be used for testing against returned list from function call */
-		ArrayList<Location> locList = new ArrayList<Location>();
 
 		for (int row = 0; row < 3; row++) { 
 			for (int col = 0; col < 3; col++) {
@@ -163,7 +147,6 @@ public class TestGhostMove extends TestCase {
 				/* using WallComponent because get_valid_moves is setup to check the 
 				 * Map.Type at all surrounding locations of an object */
 				map_3ghost5cookie.add("cookie", loc, new CookieComponent(row, col, 20), Map.Type.COOKIE);
-				locList.add(loc);
 			}
 		}
 
