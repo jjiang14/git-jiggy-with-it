@@ -4,10 +4,10 @@ import org.junit.*;
 
 public class TestMapAttack extends TestCase {
 
-	public void testMapAttack() {
+	public void testMapAttack() throws FileNotFoundException {
 		/* creates new map */
-		MainFrame frame = new MainFrame();
-
+		NoFrame frame = new NoFrame();
+		
 		/* Creates a ghost named Gerald that will be adjacent to pacman */
 		Ghost closeGhost = frame.addGhost(new Location(1, 1), "Gerald", Color.red);
 
