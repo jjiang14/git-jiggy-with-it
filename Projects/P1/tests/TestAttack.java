@@ -1,6 +1,7 @@
 import junit.framework.*;
 import java.awt.Color;
 import java.io.*;
+import static org.junit.Assert.*;
 
 public class TestAttack extends TestCase {
 

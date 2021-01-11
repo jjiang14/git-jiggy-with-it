@@ -1,10 +1,11 @@
 import java.awt.Color;
 import junit.framework.*;
 import org.junit.*;
+import java.io.FileNotFoundException;
 
-public class TestMapAttack {
+public class TestMapAttack extends TestCase {
 
-	public void testMapAttack() {
+	public void testMapAttack() throws FileNotFoundException {
 		/* creates new map */
 		MainFrame frame = new MainFrame();
 

@@ -1,11 +1,11 @@
 import junit.framework.*;
 import java.awt.Color;
 import java.io.*;
+import static org.junit.Assert.*;
 
-public class TestMapEatCookie {
+public class TestMapEatCookie extends TestCase {
 
-	// simple test when cookie and pacman in same location
-	public void testMapEatCookie() {
+	public void testMapEatCookie() throws FileNotFoundException {
 
 		Map testMap = new Map(3);
 		Location pacmanLoc = new Location(1, 1);
@@ -17,7 +17,7 @@ public class TestMapEatCookie {
 		testMap.add("pacman", pacmanLoc, pacmanComp, Map.Type.PACMAN);
 		testMap.add("tok_x1_y1", cookieLoc, cookie, Map.Type.COOKIE);
 
-		assertEquals(testMap.eatCookie("pacman").equals(cookie));
+		assertTrue(testMap.eatCookie("pacman").equals(cookie));
 	}
 
 	// test when there is no cookie
