@@ -90,6 +90,8 @@ public class TestPacManValidMoves extends TestCase {
 		}
 
 		ArrayList<Location> returnedList = pac_7Walls.get_valid_moves();
+		Collections.sort(locList);
+		Collections.sort(returnedList);
 		
 		assertTrue(returnedList.size() == 1);
 		assertTrue(locList.equals(returnedList));
@@ -132,6 +134,8 @@ public class TestPacManValidMoves extends TestCase {
 		}
 
 		ArrayList<Location> returnedList = pac_4ghost.get_valid_moves();
+		Collections.sort(locList);
+		Collections.sort(returnedList);
 		
 		assertTrue(returnedList.size() == 1);
 		assertTrue(locList.equals(returnedList));
@@ -175,6 +179,8 @@ public class TestPacManValidMoves extends TestCase {
 		}
 
 		ArrayList<Location> returnedList = pac_4ghost1cookie.get_valid_moves();
+		Collections.sort(locList);
+		Collections.sort(returnedList);
 		
 		assertTrue(returnedList.size() == 4);
 		assertTrue(locList.equals(returnedList));
