@@ -4,8 +4,16 @@
 - [Team members](#team-members)
 - [How to Start Game](#how-to-start-game-from-bash-command-line)
 - [API](#api-of-implemented-features)
-   * [PacMan Class](#pacman-class)
+   * [PacMan Class](#pacman-class) 
+      + [get_valid_moves()](get_valid_moves())
+      + [move()](move())
+      + [is_ghost_in_range()](is_ghost_in_range())
+      + [consume()](consume())
    * [Ghost Class](#ghost-class)
+      + [get_valid_moves()](get_valid_moves())
+      + [move()](move())
+      + [is_ghost_in_range()](is_ghost_in_range())
+      + [consume()](consume())
    * [Map Class](#map-class)
 
 <!-- toc -->
@@ -29,7 +37,7 @@ java -cp "src/" StartMenu
 ## API of Implemented Features
 
 ### PacMan Class
-#### 1. get_valid_moves()  
+#### get_valid_moves()  
 This function takes in no arguments and returns an arraylist of Locations that represent valid moves that Pacman is 
    able to make given his current location. If there are no valid moves an empty arraylist is returned.
 
@@ -38,7 +46,7 @@ This function takes in no arguments and returns an arraylist of Locations that r
        included creating a map with different types (i.e. COOKIE, WALL, GHOST, EMPTY, PACMAN) and evaluating the 
        returned arraylist when a call to this function was made. 
 
-#### 2. move()
+#### move()
 - **Type**: `() -> Bool`
 - **Description**: This method uses the get_valid_moves method to find the possible locations that PacMan can move, given his current location. The method then  chooses to move in one of those directions. You are free to apply an algorithm here if you would like, but the only requirement is that you move in a valid direction. If PacMan is able to move, this function returns true otherwise it returns false.
 - **Examples**:
@@ -48,10 +56,10 @@ This function takes in no arguments and returns an arraylist of Locations that r
   pacman.myLoc ∈ {(9,12), (10,11), (10,12)}
   ```
   
-#### 3. is_ghost_in_range()
+#### is_ghost_in_range()
 
 
-#### 4. consume(): 
+#### consume(): 
 This function takes in no arguments and returns a Cookie component if pacman successfully eats a cookie. This method checks if cookie exists in pacman's             location, if true then returns a Map class method eatCookie(pacman name) which returns a component, otherwise returns null. 
    
    - JUnit TestConsume:
