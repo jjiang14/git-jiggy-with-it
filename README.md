@@ -85,12 +85,16 @@ This function takes in no arguments and returns an arraylist of Locations that r
   ```
 
 #### consume()
-This function takes in no arguments and returns a Cookie component if pacman successfully eats a cookie. This method checks if cookie exists in pacman's             location, if true then returns a Map class method eatCookie(pacman name) which returns a component, otherwise returns null. 
-   
+- **Type**: `() -> JComponent`
+- **Description**: This returns a Cookie component if pacman successfully eats a cookie. This method checks if cookie exists in pacman's location, if true then returns a Map class method eatCookie(pacman name) which returns a component, otherwise returns null. 
+- **Examples**:
+  ```java
+  //pacman at location (9,12)
+  //cookie NOT at location (9,12)
+  pacman.consume() -> null
+  ```
    - JUnit TestConsume:
-     This test checks if pacman is able to successfully able to consume a cookie in the pacman's location. After setting the cookie and pacman in the same location, the consume method should return the cookie component. 
-   - JUnit TestNoCookie: 
-      This test checks a return null if there is no cookie to consume for the pacman. 
+      The first est checks if pacman is able to successfully able to consume a cookie in the pacman's location. After setting the cookie and pacman in the same location, the consume method should return the cookie component. The second test checks if there is no cookie, then consume method should return null.     
 
 ### Ghost Class
 #### get_valid_moves()
