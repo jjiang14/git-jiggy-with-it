@@ -52,7 +52,8 @@ This function takes in no arguments and returns an arraylist of Locations that r
 
 #### move()
 - **Type**: `() -> Bool`
-- **Description**: This method uses the get_valid_moves method to find the possible locations that PacMan can move, given his current location. The method then  chooses to move in one of those directions. You are free to apply an algorithm here if you would like, but the only requirement is that you move in a valid direction. If PacMan is able to move, this function returns true otherwise it returns false.
+- **Description**: uses the get_valid_moves method to find the possible locations that PacMan can move given his current location then moves PacMan to first location returned. 
+- **Returns**: `true` if PacMan is able to move, `false` if get_valid_moves() returns an empty `HashSet<Type>` (i.e. PacMan is unable to move)
 - **Examples**:
   ```java
   //pacman at location (9,11)
@@ -84,7 +85,15 @@ This function takes in no arguments and returns an arraylist of Locations that r
         <sup>*</sup>Note: Only one ghost can occupy any one Location at any given time. 
 
 #### move()
-
+- **Type**: `() -> Bool`
+- **Description**: uses the get_valid_moves method to find the possible locations that Ghost can move given its current location then moves Ghost to first location returned.
+- **Returns**: `true` if PacMan is able to move, `false` if get_valid_moves() returns an empty `HashSet<Type>` (i.e. Ghost is unable to move)
+- **Examples**:
+  ```java
+  //ghost at location (9,11)
+  ghost.move() -> true
+  ghost.myLoc ∈ {(9,12), (10,11), (10,12)}
+  ```
 
 #### is_pacman_in_range()
 
