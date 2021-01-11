@@ -21,8 +21,10 @@ public class Map {
 
 	public Map(int dim) {
 		gameOver = false;
+		// tracks location of each object
 		locations = new HashMap<String, Location>();
 		components = new HashMap<String, JComponent>();
+		// tracks types at all locations that are not empty
 		field = new HashMap<Location, HashSet<Type>>();
 
 		emptySet = new HashSet<Type>();
@@ -85,9 +87,27 @@ public class Map {
 
 	}
 
+
 	public HashSet<Type> getLoc(Location loc) {
 		// wallSet and emptySet will help you write this method
 		return null;
+
+	
+	// returns a HashSet of the types of of the objects that occur at given location
+	// emptySet returned if there are no objects on given location
+	// wallSet returned if there is a wall 
+	public HashSet<Type> getLoc(Location loc) {
+		
+		if (this.field.containsKey(loc)) {
+			if (this.field.get(loc).contains(Type.WALL)) {
+				return this.wallSet;
+			}
+			return this.field.get(loc);
+		}
+		else {
+			return this.emptySet;
+		}
+
 	}
 
 	public boolean attack(String Name) {
