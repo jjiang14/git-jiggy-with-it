@@ -40,6 +40,8 @@ This function takes in no arguments and returns a Cookie component if pacman suc
    
    - JUnit TestConsume:
      This test checks if pacman is able to successfully able to consume a cookie in the pacman's location. After setting the cookie and pacman in the same location, the consume method should return the cookie component. 
+   - JUnit TestNoCookie: 
+      This test checks a return null if there is no cookie to consume for the pacman. 
 
 ### Ghost Class
 1. get_valid_moves()  
@@ -63,7 +65,11 @@ This function takes in no arguments and returns an arraylist of Locations that r
 This function checks if a pacman is within the ghost's attack range using the is_pacman_in_range method that returns a boolean. If it returns true, then calls the attack method
 from Map class, otherwise returns false. 
 
-   - JUnit Test
+   - JUnit TestAttack: 
+      This test sets up a pacman that is within a ghost's attack range,  which should return true for the method. 
+   
+   - JUnit TestUnsuccessfulAttack: 
+      This test sets up a pacman outside of the ghost's attack range, which would return false for the method. 
       
 
 ### Map Class
@@ -87,4 +93,8 @@ This function takes in three arguments: a String, a Location, and a Type. This m
 4. eatCookie(String Name):
 This method is called by the pacman object if a cookie is in pacman's location. If the pacman successfully consumes the cookie, it updates the map to show that the cookie has been consumed. 
 
-   - JUnit 
+   - JUnit TestMapEatCookie:
+      This test sets up a cookie and pacman in same location and calls the eatCookie method which should return the cookie component. 
+      
+   - JUnit TestNoCookie: 
+      This test sets up a cookie and pacman in different location and calls the eatCookie method which should return null. 
