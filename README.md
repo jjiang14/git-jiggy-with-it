@@ -29,7 +29,7 @@
 
 ## Image of Game Play
 
-![Image of Game Play]()
+![Image of Game Play](gamePlayImage.png)
 
 ## How to Start Game from Bash Command Line
 
