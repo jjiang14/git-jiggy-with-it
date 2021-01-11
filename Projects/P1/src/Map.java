@@ -2,28 +2,24 @@ import java.util.HashMap;
 import java.util.HashSet;
 import javax.swing.JComponent;
 
-public class Map{
+public class Map {
 
 	public enum Type {
-		EMPTY,
-		PACMAN,
-		GHOST,
-		WALL,
-		COOKIE		
+		EMPTY, PACMAN, GHOST, WALL, COOKIE
 	}
-	
+
 	private HashMap<Location, HashSet<Type>> field;
 	private boolean gameOver;
 	private int dim;
 
 	private HashMap<String, Location> locations;
-	private HashMap<String, JComponent> components; 
+	private HashMap<String, JComponent> components;
 	private HashSet<Type> emptySet;
-	private HashSet<Type> wallSet; 
+	private HashSet<Type> wallSet;
 
 	private int cookies = 0;
 
-	public Map(int dim){
+	public Map(int dim) {
 		gameOver = false;
 		// tracks location of each object
 		locations = new HashMap<String, Location>();
@@ -38,22 +34,22 @@ public class Map{
 		this.dim = dim;
 	}
 
-
 	public void add(String name, Location loc, JComponent comp, Type type) {
 		locations.put(name, loc);
 		components.put(name, comp);
-		if (!field.containsKey(loc)) field.put(loc, new HashSet<Type>());
+		if (!field.containsKey(loc))
+			field.put(loc, new HashSet<Type>());
 		field.get(loc).add(type);
 	}
 
 	public int getCookies() {
 		return cookies;
 	}
-	
+
 	public boolean isGameOver() {
 		return gameOver;
 	}
-	
+
 	/* moves the object specified by name to the location specified by loc 
 	 * on success returns true, 
 	 * otherwise returns false */
@@ -88,7 +84,10 @@ public class Map{
 		field.get(loc).add(type);
 		
 		return true;
+
 	}
+
+
 	
 	// returns a HashSet of the types of of the objects that occur at given location
 	// emptySet returned if there are no objects on given location
@@ -104,9 +103,13 @@ public class Map{
 		else {
 			return this.emptySet;
 		}
+
 	}
 
 	public boolean attack(String Name) {
+
+		// update gameOver
+
 		/* checks to make sure pacman is present on the map */
 		Location pac_loc;
 		if (locations.containsKey("pacman")) {
@@ -127,10 +130,41 @@ public class Map{
 		/* if the attack was not successful return false */
 		return false;
 	}
-	
+
 	public JComponent eatCookie(String name) {
-		//update locations, components, field, and cookies
-		//the id for a cookie at (10, 1) is tok_x10_y1
-		return null;
+		// update locations, components, field, and cookies
+		// the id for a cookie at (10, 1) is tok_x10_y1
+
+		// get location of cookie
+		Location loc = locations.get(name);
+
+		if (loc == null) {
+			return null;
+		}
+
+		// remove cookie from field based on location
+		HashSet<Type> f = field.get(loc);
+
+		if (f.remove(Type.COOKIE) == false) {
+			return null;
+		}
+
+		// get cookie id
+		String cookieId = "tok_x" + loc.x + "_y" + loc.y;
+
+		// get JComponent of cookie
+		JComponent cookie = components.get(cookieId);
+
+		if (cookie == null) {
+			return null;
+		}
+
+		// remove cookie component
+		components.remove(cookieId);
+
+		// subtract cookie count by 1
+		// cookies = cookies - 1;
+
+		return cookie;
 	}
 }
