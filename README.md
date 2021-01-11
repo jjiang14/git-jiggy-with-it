@@ -1,5 +1,14 @@
 # Project 1: PacMan
 
+## Table of Contents
+- [Team members](#team-members)
+- [How to Start Game](#how-to-start-game-from-bash-command-line)
+- [API](#api-of-implemented-features)
+   * [PacMan Class](#pacman-class)
+   * [Ghost Class](#ghost-class)
+   * [Map Class](#map-class)
+
+<!-- toc -->
 ## Team Members
 * Daniel Kyung
 * Lydia Hancock
@@ -10,7 +19,7 @@
 
 [insert image/video]
 
-## How to Begin Game
+## How to Start Game from Bash Command Line
 
 ```bash
 javac -cp "src/" src/*.java
