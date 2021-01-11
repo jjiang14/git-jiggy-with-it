@@ -55,11 +55,14 @@ This function takes in no arguments and returns an arraylist of Locations that r
 2. move()
 
 
-3. is_ghost_in_range()
+3. is_pacman_in_range()
 
 
 4. attack()
+This function checks if a pacman is within the ghost's attack range using the is_pacman_in_range method that returns a boolean. If it returns true, then calls the attack method
+from Map class, otherwise returns false. 
 
+   -JUnit Test
       
 
 ### Map Class
@@ -81,3 +84,6 @@ This function takes in three arguments: a String, a Location, and a Type. This m
 
 
 4. eatCookie(String Name)
+This method is called by the pacman object if a cookie is in pacman's location. If the pacman successfully consumes the cookie, it updates the map to show that the cookie has been consumed. 
+
+   - JUnit 
