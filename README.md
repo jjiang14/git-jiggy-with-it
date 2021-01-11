@@ -12,9 +12,13 @@
    * [Ghost Class](#ghost-class)
       + [get_valid_moves()](#get_valid_moves-1)
       + [move()](#move-1)
-      + [is_ghost_in_range()](#is_pacman_in_range)
-      + [consume()](#attack)
+      + [is_pacman_in_range()](#is_pacman_in_range)
+      + [attack()](#attack)
    * [Map Class](#map-class)
+      + [move(String name, Location loc, Type type)](move(String name, Location loc, Type type))
+      + [getLoc(Location loc)](getLoc(Location loc))
+      + [attack(String name)](attack(String name))
+      + [eatCookie(String Name)](eatCookie(String Name))
 
 <!-- toc -->
 ## Team Members
@@ -114,7 +118,7 @@ This function takes in three arguments: a String, a Location, and a Type. This m
 #### attack(String name)
 
 
-#### eatCookie(String Name):
+#### eatCookie(String Name)
 This method is called by the pacman object if a cookie is in pacman's location. If the pacman successfully consumes the cookie, it updates the map to show that the cookie has been consumed. 
 
    - JUnit TestMapEatCookie:
