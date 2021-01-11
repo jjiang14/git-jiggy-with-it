@@ -4,9 +4,9 @@ import java.io.*;
 
 public class TestPacManInRange extends TestCase {
 
-	public void testPacManInRange() throws FileNotFoundException{
+	public void testPacManInRange() throws FileNotFoundException {
 		/* creates new map */
-		MainFrame frame = new MainFrame();
+		NoFrame frame = new NoFrame();
 		
 		/* creates pacman */
 		PacMan pacman = frame.addPacMan(new Location(0, 0));
