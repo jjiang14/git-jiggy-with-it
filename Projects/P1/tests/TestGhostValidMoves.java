@@ -8,9 +8,6 @@ public class TestGhostValidMoves extends TestCase {
 	
 	/* Testing get_valid_moves when a GHOST has zero adjacent WALLs */
 	public void testGhostValidMoves_0Walls() throws FileNotFoundException {
-		/* Assuming that getLoc in Map class is correctly implemented */
-		// TODO: add Map-getLoc() code once available or test more rigorously
-
 		/* creating test map */
 		Map map_0Walls = new Map(3);
 		
@@ -130,7 +127,6 @@ public class TestGhostValidMoves extends TestCase {
 					continue;
 				} else if (row == 1 && col == 1) {
 					map_3ghost1Pacman.add("ghost", locGhost, new GhostComponent(row, col, 20), Map.Type.GHOST);
-					locList.add(loc);
 					continue;
 				}
 				/* using WallComponent because get_valid_moves is setup to check the 
