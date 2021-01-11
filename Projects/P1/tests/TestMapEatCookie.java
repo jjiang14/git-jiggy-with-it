@@ -2,7 +2,7 @@ import junit.framework.*;
 import java.awt.Color;
 import java.io.*;
 
-public class TestMapEatCookie {
+public class TestMapEatCookie extends TestCase {
 
 	// simple test when cookie and pacman in same location
 	public void testMapEatCookie() {
