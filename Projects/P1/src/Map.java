@@ -21,8 +21,10 @@ public class Map {
 
 	public Map(int dim) {
 		gameOver = false;
+		// tracks location of each object
 		locations = new HashMap<String, Location>();
 		components = new HashMap<String, JComponent>();
+		// tracks types at all locations that are not empty
 		field = new HashMap<Location, HashSet<Type>>();
 
 		emptySet = new HashSet<Type>();
@@ -48,19 +50,84 @@ public class Map {
 		return gameOver;
 	}
 
+	/* moves the object specified by name to the location specified by loc 
+	 * on success returns true, 
+	 * otherwise returns false */
+	/* NOTE: It is assumed that the caller of this function will be passing in a valid Location, 
+	 * therefore no validation check for loc is required */
 	public boolean move(String name, Location loc, Type type) {
-		// update locations, components, and field
-		// use the setLocation method for the component to move it to the new location
-		return false;
+		
+		if (!locations.containsKey(name)) {
+			return false;						
+		}
+		
+		if (!components.containsKey(name)) {
+			return false;
+		}
+		
+		if (!field.containsKey(loc)) {
+			return false;
+		}
+		
+		/* will be used to update field variable */
+		Location currLoc = locations.get(name);
+		
+		/* updating locations */
+		locations.put(name, loc);
+		
+		/* updating components */
+		JComponent currComp = components.get(name);
+		currComp.setLocation(loc.x, loc.y);
+		
+		/* updating field */
+		field.get(currLoc).remove(type);
+		field.get(loc).add(type);
+		
+		return true;
+
 	}
 
+
+	
+	// returns a HashSet of the types of of the objects that occur at given location
+	// emptySet returned if there are no objects on given location
+	// wallSet returned if there is a wall 
 	public HashSet<Type> getLoc(Location loc) {
-		// wallSet and emptySet will help you write this method
-		return null;
+		
+		if (this.field.containsKey(loc)) {
+			if (this.field.get(loc).contains(Type.WALL)) {
+				return this.wallSet;
+			}
+			return this.field.get(loc);
+		}
+		else {
+			return this.emptySet;
+		}
+
 	}
 
 	public boolean attack(String Name) {
+
 		// update gameOver
+
+		/* checks to make sure pacman is present on the map */
+		Location pac_loc;
+		if (locations.containsKey("pacman")) {
+			/* gets pacman's location */
+			pac_loc = locations.get("pacman");
+		} else {
+			return false;
+		}
+		/* moves the ghost to pacman's location */
+		if (move(Name, pac_loc, Map.Type.GHOST) == true) {
+			/* if the ghost successfully moves to pacman's position, check to make sure both pacman and ghost are at that coordinate */
+			if (field.get(pac_loc).contains(Map.Type.PACMAN) && field.get(pac_loc).contains(Map.Type.GHOST)) {
+				/* update gameOver and return true */
+				gameOver = true;
+				return true;
+			}
+		}
+		/* if the attack was not successful return false */
 		return false;
 	}
 
