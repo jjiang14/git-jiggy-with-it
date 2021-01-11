@@ -18,7 +18,7 @@ public class TestConsume extends TestCase {
 		testMap.add("tok_x1_y1", cookieLoc, cookie, Map.Type.COOKIE);
 		PacMan pacman = new PacMan("pacman", pacmanLoc, testMap);
 
-		assertEquals(pacman.consume().equals(cookie));
+		assertTrue(pacman.consume().equals(cookie));
 
 	}
 
