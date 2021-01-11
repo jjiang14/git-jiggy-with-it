@@ -1,6 +1,7 @@
 import java.awt.Color;
 import junit.framework.*;
 import org.junit.*;
+import java.io.*;
 
 public class TestMapAttack extends TestCase {
 
