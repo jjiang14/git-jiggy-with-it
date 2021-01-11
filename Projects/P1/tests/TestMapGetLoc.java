@@ -1,7 +1,7 @@
 import junit.framework.*;
 import java.awt.Color;
 import java.io.*;
-
+import java.util.HashSet;
 
 public class TestMapGetLoc extends TestCase {
 	
