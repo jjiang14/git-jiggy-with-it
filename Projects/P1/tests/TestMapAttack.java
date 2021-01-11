@@ -2,7 +2,7 @@ import java.awt.Color;
 import junit.framework.*;
 import org.junit.*;
 
-public class TestMapAttack {
+public class TestMapAttack extends TestCase {
 
 	public void testMapAttack() {
 		/* creates new map */
