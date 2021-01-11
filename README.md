@@ -29,7 +29,7 @@
 
 ## Image of Game Play
 
-[insert image/video]
+![Image of Game Play]()
 
 ## How to Start Game from Bash Command Line
 
@@ -68,7 +68,7 @@ java -cp "src/" StartMenu
   Pacman's valid moves include - moving into a Location with a COOKIE or a Location that is EMPTY. Testing
   included creating a map with different types (i.e. COOKIE, WALL, GHOST, EMPTY, PACMAN) and evaluating the
   returned arraylist when a call to this function was made.
-      
+
 
 #### move()
 - **Type**: `() -> Bool`

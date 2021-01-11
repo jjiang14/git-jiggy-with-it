@@ -1,6 +1,7 @@
 import junit.framework.*;
 import java.awt.Color;
 import java.io.*;
+import java.util.ArrayList;
 
 /* assumes PacMan.get_valid_moves() works properly */
 
@@ -36,7 +37,7 @@ public class TestPacManMove extends TestCase {
 
 		pac_0Walls.move();
 		assertTrue(pac_0Walls.myLoc.equals(returnedList.get(0)));
-		assertTrue(map_0Walls.getLoc(returnedList.get(0).contains(Map.Type.PACMAN)));
+		assertTrue(map_0Walls.getLoc(returnedList.get(0)).contains(Map.Type.PACMAN));
 		
 		return;
 	}
@@ -74,7 +75,7 @@ public class TestPacManMove extends TestCase {
 
 		pac_7Walls.move();
 		assertTrue(pac_7Walls.myLoc.equals(returnedList.get(0)));
-		assertTrue(map_7Walls.getLoc(returnedList.get(0).contains(Map.Type.PACMAN)));
+		assertTrue(map_7Walls.getLoc(returnedList.get(0)).contains(Map.Type.PACMAN));
 
 		return;
 	}
@@ -115,7 +116,7 @@ public class TestPacManMove extends TestCase {
 
 		pac_4ghost.move();
 		assertTrue(pac_4ghost.myLoc.equals(returnedList.get(0)));
-		assertTrue(map_4ghost.getLoc(returnedList.get(0).contains(Map.Type.PACMAN)));
+		assertTrue(map_4ghost.getLoc(returnedList.get(0)).contains(Map.Type.PACMAN));
 
 		return;
 	}
@@ -157,7 +158,7 @@ public class TestPacManMove extends TestCase {
 
 		pac_4ghost1cookie.move();
 		assertTrue(pac_4ghost1cookie.myLoc.equals(returnedList.get(0)));
-		assertTrue(map_4ghost1cookie.getLoc(returnedList.get(0).contains(Map.Type.PACMAN)));
+		assertTrue(map_4ghost1cookie.getLoc(returnedList.get(0)).contains(Map.Type.PACMAN));
 
 		return;
 	}
