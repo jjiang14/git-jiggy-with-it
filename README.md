@@ -29,7 +29,7 @@
 
 ## Image/Video of Game Play
 
-[insert image/video]
+![Image of Game Play](gamePlayImage.png)
 
 ## How to Start Game from Bash Command Line
 
