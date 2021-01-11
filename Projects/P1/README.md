@@ -156,11 +156,11 @@ The Map Class uses Java GUI to create the visual represenation of our game. For 
 ### getLoc(Location loc)
 
 - **Type**: `(Location loc) -> HashSet<Type>`
-- **Description**: For the given location argument, returns what is currently at the location (Empty, Pacman, Cookie, Ghost, Wall).
+- **Description**: For the given location argument, returns the types of what is currently at the location (Empty, Pacman, Cookie, Ghost, Wall). Returns only Wall if a wall is present. Returns Empty if nothing is present.
 
  ```java
   //pacman at location (2,4)
-  map.getLoc(new Location (2,4) -> Map.Type.PACMAN
+  map.getLoc(new Location (2,4)) -> Map.Type.PACMAN
   ```
 
 ### attack(String name)

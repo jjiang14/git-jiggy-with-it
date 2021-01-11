@@ -12,23 +12,23 @@ class Location implements Comparable<Location> {
 	}
 
 	public Location unshift(Location other) {
-		return new Location(other.x - x, other.y - y);
+	  return new Location(other.x - x, other.y - y);
 	}
 	
 	@Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Location)) return false;
-        Location loc  = (Location) o;
-        return x == loc.x && y == loc.y;
-    }
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof Location)) return false;
+    Location loc  = (Location) o;
+    return x == loc.x && y == loc.y;
+  }
 
-    @Override
-    public int hashCode() {
-        int result = x;
-        result = 31 * result + y;
-        return result;
-    }
+  @Override
+  public int hashCode() {
+    int result = x;
+    result = 31 * result + y;
+    return result;
+  }
 
 	@Override
 	public int compareTo(Location loc) {
@@ -38,7 +38,7 @@ class Location implements Comparable<Location> {
 			return 1;
 		}
 		/* this.x == loc.x */
-		
+
 		if (this.y < loc.y) {
 			return -1;
 		} else if (this.y > loc.y) {
