@@ -162,8 +162,8 @@ public class Map {
 		// remove cookie component
 		components.remove(cookieId);
 
-		// subtract cookie count by 1
-		// cookies = cookies - 1;
+		// add points when cookie is consumed
+		// cookies = cookies + 1;
 
 		return cookie;
 	}
