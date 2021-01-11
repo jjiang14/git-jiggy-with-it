@@ -15,10 +15,10 @@
       + [is_pacman_in_range()](#is_pacman_in_range)
       + [attack()](#attack)
    * [Map Class](#map-class)
-      + [move(String name, Location loc, Type type)](move(String-name,-Location-loc,-Type-type))
-      + [getLoc(Location loc)](getLoc(Location-loc))
-      + [attack(String name)](attack(String-name))
-      + [eatCookie(String Name)](eatCookie(String-Name))
+      + [move(String name, Location loc, Type type)](move%28String-name,-Location-loc,-Type-type%29)
+      + [getLoc(Location loc)](getLoc%28Location-loc%29)
+      + [attack(String name)](attack%28String-name%29)
+      + [eatCookie(String Name)](eatCookie%28String-Name%29)
 
 <!-- toc -->
 ## Team Members
