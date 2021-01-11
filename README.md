@@ -15,12 +15,12 @@
       + [is_pacman_in_range()](#is_pacman_in_range)
       + [attack()](#attack)
    * [Map Class](#map-class)
+      <!-- Map code links do not work -->
       + [move(String name, Location loc, Type type)](move%28String-name,-Location-loc,-Type-type%29)
       + [getLoc(Location loc)](getLoc%28Location-loc%29)
       + [attack(String name)](attack%28String-name%29)
       + [eatCookie(String Name)](eatCookie%28String-Name%29)
 
-<!-- toc -->
 ## Team Members
 * Daniel Kyung
 * Lydia Hancock
@@ -52,14 +52,15 @@ This function takes in no arguments and returns an arraylist of Locations that r
 
 #### move()
 - **Type**: `() -> Bool`
-- **Description**: uses the get_valid_moves method to find the possible locations that PacMan can move given his current location then moves PacMan to first location returned. 
+- **Description**: uses the get_valid_moves method to find the possible locations that PacMan can move given his current location then moves PacMan to first location returned
 - **Returns**: `true` if PacMan is able to move, `false` if get_valid_moves() returns an empty `HashSet<Type>` (i.e. PacMan is unable to move)
-- **Examples**:
+- **Example**:
   ```java
-  //pacman at location (9,11)
+  //pacman at location (1,1)
   pacman.move() -> true
-  pacman.myLoc ∈ {(9,12), (10,11), (10,12)}
+  pacman.myLoc ∈ {(1,2), (2,1), (2,2)}
   ```
+- **Test Description**:
   
 #### is_ghost_in_range()
 
@@ -86,14 +87,15 @@ This function takes in no arguments and returns an arraylist of Locations that r
 
 #### move()
 - **Type**: `() -> Bool`
-- **Description**: uses the get_valid_moves method to find the possible locations that Ghost can move given its current location then moves Ghost to first location returned.
+- **Description**: uses the get_valid_moves method to find the possible locations that Ghost can move given its current location then moves Ghost to first location returned
 - **Returns**: `true` if PacMan is able to move, `false` if get_valid_moves() returns an empty `HashSet<Type>` (i.e. Ghost is unable to move)
-- **Examples**:
+- **Example**:
   ```java
-  //ghost at location (9,11)
+  //ghost at location (1,1)
   ghost.move() -> true
-  ghost.myLoc ∈ {(9,12), (10,11), (10,12)}
+  ghost.myLoc ∈ {(1,2), (2,1), (2,2)}
   ```
+- **Test Description**:
 
 #### is_pacman_in_range()
 
@@ -122,7 +124,15 @@ This function takes in three arguments: a String, a Location, and a Type. This m
 
 
 #### getLoc(Location loc)
-
+- **Type**: `(Location loc) -> HashSet<Type>`
+- **Description**: 
+- **Returns**: 
+- **Example**:
+  ```java
+  //pacman and ghost at location (1,1)
+  map.getLoc(new Location (1,1)) -> {Map.Type.PACMAN, Map.Type.GHOST}
+  ```
+- **Test Description**:
 
 #### attack(String name)
 
