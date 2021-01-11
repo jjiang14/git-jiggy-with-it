@@ -21,7 +21,6 @@
       + [attack(String name)](attack%28String-name%29)
       + [eatCookie(String Name)](eatCookie%28String-Name%29)
 
-=======
 ## Team Members
 * Daniel Kyung
 * Lydia Hancock
@@ -77,7 +76,14 @@ This function takes in no arguments and returns an arraylist of Locations that r
 - **Test Description**:
   
 #### is_ghost_in_range()
-
+- **Type**: `() -> Bool`
+- **Description**: This method looks at all of PacMan's adjacent grid spaces (including diagonal grid spaces) and checks if a Ghost is present. If a Ghost is present in any adjacent grid space this method returns true, otherwise it returns false.
+- **Examples**:
+  ```java
+  //ghost at location (9,11)
+  //pacman at location (9,12)
+  pacman.is_ghost_in_range() -> true
+  ```
 
 #### consume()
 This function takes in no arguments and returns a Cookie component if pacman successfully eats a cookie. This method checks if cookie exists in pacman's             location, if true then returns a Map class method eatCookie(pacman name) which returns a component, otherwise returns null. 
@@ -112,7 +118,14 @@ This function takes in no arguments and returns an arraylist of Locations that r
 - **Test Description**:
 
 #### is_pacman_in_range()
-
+- **Type**: `() -> Bool`
+- **Description**: This method looks at all of a Ghost's adjacent grid spaces (including diagonal grid spaces) and checks if PacMan is present. If PacMan is present in any adjacent grid space this method returns true, otherwise it returns false.
+- **Examples**:
+  ```java
+  //ghost at location (9,11)
+  //pacman at location (9,12)
+  ghost.is_pacman_in_range() -> true
+  ```
 
 #### attack()
 This function checks if a pacman is within the ghost's attack range using the is_pacman_in_range method that returns a boolean. If it returns true, then calls the attack method
@@ -151,7 +164,14 @@ This function takes in three arguments: a String, a Location, and a Type. This m
 - **Test Description**:
 
 #### attack(String name)
-
+- **Type**: `(String name) -> Bool`
+- **Description**: This method is called by the Ghost's attack method, meaning this method will only be called when PacMan is in range of a Ghost. When called this method will move the Ghost to PacMan's coordinates, then check to make sure both the Ghost and PacMan are positioned at the same grid space. If the Ghost and PacMan are at the same grid space the gameOver variable will be set to true, the display will be updated, and the method will return true. If the Ghost and PacMan are not at the same grid space this method will return false.
+- **Examples**:
+ ```java
+  //ghost named clyde at location (9,11)
+  //pacman at location (9,12)
+  Map.attack("clyde") -> true
+  ```
 
 #### eatCookie(String Name)
 This method is called by the pacman object if a cookie is in pacman's location. If the pacman successfully consumes the cookie, it updates the map to show that the cookie has been consumed. 
