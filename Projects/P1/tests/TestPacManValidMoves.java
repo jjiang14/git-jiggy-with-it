@@ -38,18 +38,7 @@ public class TestPacManValidMoves extends TestCase {
 		List<Location> returnedList = pac_0Walls.get_valid_moves();
 		Collections.sort(locList);
 		Collections.sort(returnedList);
-		
-		/* printing out sorted locList */
-		for (Location loc:locList) {
-			System.out.println(loc);
-		}
-		System.out.println("Printing returnedList");
-		/* printing out sorted returnedList */
-		for (Location loc:returnedList) {
-			System.out.println(loc);
-		}
-		System.out.println();
-		
+				
 		assertEquals(8, returnedList.size());
 		assertTrue(locList.equals(returnedList));
 		
@@ -91,7 +80,7 @@ public class TestPacManValidMoves extends TestCase {
 		Collections.sort(locList);
 		Collections.sort(returnedList);
 		
-		assertTrue(returnedList.size() == 1);
+		assertEquals(1, returnedList.size());
 		assertTrue(locList.equals(returnedList));
 
 		return;
@@ -135,7 +124,7 @@ public class TestPacManValidMoves extends TestCase {
 		Collections.sort(locList);
 		Collections.sort(returnedList);
 		
-		assertTrue(returnedList.size() == 1);
+		assertEquals(1, returnedList.size());
 		assertTrue(locList.equals(returnedList));
 
 		return;
@@ -180,7 +169,7 @@ public class TestPacManValidMoves extends TestCase {
 		Collections.sort(locList);
 		Collections.sort(returnedList);
 		
-		assertTrue(returnedList.size() == 4);
+		assertEquals(4, returnedList.size());
 		assertTrue(locList.equals(returnedList));
 
 		return;
