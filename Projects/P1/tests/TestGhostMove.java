@@ -1,6 +1,7 @@
 import junit.framework.*;
 import java.awt.Color;
 import java.io.*;
+import java.util.ArrayList;
 
 /* assumes Ghost.get_valid_moves() works properly */
 
@@ -39,7 +40,7 @@ public class TestGhostMove extends TestCase {
 
 		ghost_0Walls.move();
 		assertTrue(ghost_0Walls.myLoc.equals(returnedList.get(0)));
-		assertTrue(map_0Walls.getLoc(returnedList.get(0).contains(Map.Type.GHOST)));
+		assertTrue(map_0Walls.getLoc(returnedList.get(0)).contains(Map.Type.GHOST));
 		
 		return;
 	}
@@ -76,7 +77,7 @@ public class TestGhostMove extends TestCase {
 		
 		ghost_7Walls.move();
 		assertTrue(ghost_7Walls.myLoc.equals(returnedList.get(0)));
-		assertTrue(map_7Walls.getLoc(returnedList.get(0).contains(Map.Type.GHOST)));
+		assertTrue(map_7Walls.getLoc(returnedList.get(0)).contains(Map.Type.GHOST));
 
 		return;
 	}
@@ -99,7 +100,7 @@ public class TestGhostMove extends TestCase {
 				
 				/* setting GHOST */
 				if (row == 2 && col == 1) {
-					map_3ghost1Pacman.add("pacman", locPacman, new PacmanComponent(row, col, 20), Map.Type.PACMAN);
+					map_3ghost1Pacman.add("pacman", locPacman, new PacManComponent(row, col, 20), Map.Type.PACMAN);
 					continue;
 				} else if (row == 0) {
 					map_3ghost1Pacman.add("ghost", loc, new GhostComponent(row, col, 20), Map.Type.GHOST);
@@ -114,11 +115,11 @@ public class TestGhostMove extends TestCase {
 			}
 		}
 
-		ArrayList<Location> returnedList = ghost_3ghost1GHOST.get_valid_moves();
+		ArrayList<Location> returnedList = ghost_3ghost1Pacman.get_valid_moves();
 		
 		ghost_3ghost1Pacman.move();
 		assertTrue(ghost_3ghost1Pacman.myLoc.equals(returnedList.get(0)));
-		assertTrue(map_3ghost1Pacman.getLoc(returnedList.get(0).contains(Map.Type.GHOST)));
+		assertTrue(map_3ghost1Pacman.getLoc(returnedList.get(0)).contains(Map.Type.GHOST));
 
 		return;
 	}
@@ -154,7 +155,7 @@ public class TestGhostMove extends TestCase {
 		
 		ghost_3ghost5cookie.move();
 		assertTrue(ghost_3ghost5cookie.myLoc.equals(returnedList.get(0)));
-		assertTrue(map_3ghost5cookie.getLoc(returnedList.get(0).contains(Map.Type.GHOST)));;
+		assertTrue(map_3ghost5cookie.getLoc(returnedList.get(0)).contains(Map.Type.GHOST));;
 
 		return;
 	}
