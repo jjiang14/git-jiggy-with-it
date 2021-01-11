@@ -1,6 +1,7 @@
 import junit.framework.*;
 import java.awt.Color;
 import java.io.*;
+import java.util.HashSet;
 
 
 public class TestMapGetLoc extends TestCase {
@@ -19,10 +20,10 @@ public class TestMapGetLoc extends TestCase {
 		Location wallLoc0 = new Location(2, 2);
 		Location wallLoc1 = new Location(1, 2);
 
-		emptySet = new HashSet<Map.Type>();
-		wallSet = new HashSet<Map.Type>();
-		emptySet.add(Type.EMPTY);
-		wallSet.add(Type.WALL);
+		HashSet<Map.Type> emptySet = new HashSet<Map.Type>();
+		HashSet<Map.Type> wallSet = new HashSet<Map.Type>();
+		emptySet.add(Map.Type.EMPTY);
+		wallSet.add(Map.Type.WALL);
 
 		testMap.add("pacman", pacLoc, new PacManComponent(pacLoc.x, pacLoc.y, 20), Map.Type.PACMAN);
 		testMap.add("cookie0", cookieLoc0, new CookieComponent(cookieLoc0.x, cookieLoc0.y, 20), Map.Type.COOKIE);
@@ -39,7 +40,7 @@ public class TestMapGetLoc extends TestCase {
 		HashSet<Map.Type> expectedReturn = new HashSet<Map.Type>();
 		expectedReturn.add(Map.Type.GHOST);
 
-		assertTrue(expectedReturn.equals(testMap.getLoc(new Location((0, 0)))));
+		assertTrue(expectedReturn.equals(testMap.getLoc(new Location(0, 0))));
 
 		// Test location (0, 1)
 		expectedReturn = new HashSet<Map.Type>();
