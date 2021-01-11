@@ -88,10 +88,6 @@ public class Map {
 	}
 
 
-	public HashSet<Type> getLoc(Location loc) {
-		// wallSet and emptySet will help you write this method
-		return null;
-
 	
 	// returns a HashSet of the types of of the objects that occur at given location
 	// emptySet returned if there are no objects on given location
