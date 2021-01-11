@@ -12,7 +12,10 @@
 
 ## How to Begin Game
 
-[instructions for command line start up]
+```bash
+javac -cp "src/" src/*.java
+java -cp "src/" StartMenu
+```
 
 ## API of Implemented Features
 
