@@ -36,6 +36,9 @@ This function takes in no arguments and returns an arraylist of Locations that r
 
 
 4. consume() 
+This function takes in no arguments and returns a Cookie component if pacman successfully eats a cookie. This method checks if cookie exists in pacman's location, if true then returns a Map class method eatCookie(pacman name) which returns a component, otherwise returns null. 
+   
+   - JUnit TestGhostValidMoves:  
 
 ### Ghost Class
 1. get_valid_moves()  
@@ -55,7 +58,9 @@ This function takes in no arguments and returns an arraylist of Locations that r
 3. is_ghost_in_range()
 
 
-4. consume() 
+4. attack()
+
+      
 
 ### Map Class
 1. move(String name, Location loc, Type type)  
