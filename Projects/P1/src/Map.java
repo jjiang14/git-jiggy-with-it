@@ -107,7 +107,24 @@ public class Map{
 	}
 
 	public boolean attack(String Name) {
-		//update gameOver
+		/* checks to make sure pacman is present on the map */
+		Location pac_loc;
+		if (locations.containsKey("pacman")) {
+			/* gets pacman's location */
+			pac_loc = locations.get("pacman");
+		} else {
+			return false;
+		}
+		/* moves the ghost to pacman's location */
+		if (move(Name, pac_loc, Map.Type.GHOST) == true) {
+			/* if the ghost successfully moves to pacman's position, check to make sure both pacman and ghost are at that coordinate */
+			if (field.get(pac_loc).contains(Map.Type.PACMAN) && field.get(pac_loc).contains(Map.Type.GHOST)) {
+				/* update gameOver and return true */
+				gameOver = true;
+				return true;
+			}
+		}
+		/* if the attack was not successful return false */
 		return false;
 	}
 	
