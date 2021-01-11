@@ -39,18 +39,6 @@ public class TestGhostValidMoves extends TestCase {
 		Collections.sort(locList);
 		Collections.sort(returnedList);
 
-		assertTrue(returnedList.size() == 8);
-		/* printing out sorted locList */
-		for (Location loc:locList) {
-			System.out.println(loc);
-		}
-		System.out.println("Printing returnedList");
-		/* printing out sorted returnedList */
-		for (Location loc:returnedList) {
-			System.out.println(loc);
-		}
-		System.out.println();
-
 		assertEquals(8, returnedList.size());
 		assertTrue(locList.equals(returnedList));
 		
@@ -92,7 +80,7 @@ public class TestGhostValidMoves extends TestCase {
 		Collections.sort(locList);
 		Collections.sort(returnedList);
 		
-		assertTrue(returnedList.size() == 1);
+		assertEquals(1, returnedList.size());
 		assertTrue(locList.equals(returnedList));
 
 		return;
@@ -140,7 +128,7 @@ public class TestGhostValidMoves extends TestCase {
 		Collections.sort(locList);
 		Collections.sort(returnedList);
 		
-		assertTrue(returnedList.size() == 5);
+		assertEquals(5, returnedList.size());
 		assertTrue(locList.equals(returnedList));
 
 		return;
@@ -181,7 +169,7 @@ public class TestGhostValidMoves extends TestCase {
 		Collections.sort(locList);
 		Collections.sort(returnedList);
 		
-		assertTrue(returnedList.size() == 5);
+		assertEquals(5, returnedList.size());
 		assertTrue(locList.equals(returnedList));
 
 		return;
