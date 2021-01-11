@@ -57,11 +57,10 @@ java -cp "src/" StartMenu
 #### get_valid_moves()
 This function takes in no arguments and returns an arraylist of Locations that represent valid moves that Pacman is 
    able to make given his current location. If there are no valid moves an empty arraylist is returned.
-
-     - JUnit TestPacManValidMoves:  
-       Pacman's valid moves include - moving into a Location with a COOKIE or a Location that is EMPTY. Testing 
-       included creating a map with different types (i.e. COOKIE, WALL, GHOST, EMPTY, PACMAN) and evaluating the 
-       returned arraylist when a call to this function was made. 
+   - JUnit TestPacManValidMoves:  
+     Pacman's valid moves include - moving into a Location with a COOKIE or a Location that is EMPTY. Testing 
+     included creating a map with different types (i.e. COOKIE, WALL, GHOST, EMPTY, PACMAN) and evaluating the 
+     returned arraylist when a call to this function was made. 
 
 #### move()
 - **Type**: `() -> Bool`
