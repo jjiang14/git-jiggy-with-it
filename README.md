@@ -20,7 +20,7 @@ java -cp "src/" StartMenu
 ## API of Implemented Features
 
 ### PacMan Class
-1. get_valid_moves()  
+#### 1. get_valid_moves()  
 This function takes in no arguments and returns an arraylist of Locations that represent valid moves that Pacman is 
    able to make given his current location. If there are no valid moves an empty arraylist is returned.
 
@@ -29,13 +29,20 @@ This function takes in no arguments and returns an arraylist of Locations that r
        included creating a map with different types (i.e. COOKIE, WALL, GHOST, EMPTY, PACMAN) and evaluating the 
        returned arraylist when a call to this function was made. 
 
-2. move()
-   
+#### 2. move()
+- **Type**: `() -> Bool`
+- **Description**: This method uses the get_valid_moves method to find the possible locations that PacMan can move, given his current location. The method then  chooses to move in one of those directions. You are free to apply an algorithm here if you would like, but the only requirement is that you move in a valid direction. If PacMan is able to move, this function returns true otherwise it returns false.
+- **Examples**:
+  ```java
+  //pacman at location (9,11)
+  pacman.move() -> true
+  pacman.myLoc ∈ {(9,12), (10,11), (10,12)}
+  ```
+  
+#### 3. is_ghost_in_range()
 
-3. is_ghost_in_range()
 
-
-4. consume(): 
+#### 4. consume(): 
 This function takes in no arguments and returns a Cookie component if pacman successfully eats a cookie. This method checks if cookie exists in pacman's             location, if true then returns a Map class method eatCookie(pacman name) which returns a component, otherwise returns null. 
    
    - JUnit TestConsume:
@@ -44,7 +51,7 @@ This function takes in no arguments and returns a Cookie component if pacman suc
       This test checks a return null if there is no cookie to consume for the pacman. 
 
 ### Ghost Class
-1. get_valid_moves()  
+#### 1. get_valid_moves()  
 This function takes in no arguments and returns an arraylist of Locations that represent valid moves that a Ghost is
    able to make given their current location. If there are no valid moves an empty arraylist is returned.
 
@@ -55,13 +62,13 @@ This function takes in no arguments and returns an arraylist of Locations that r
 
         <sup>*</sup>Note: Only one ghost can occupy any one Location at any given time. 
 
-2. move()
+#### 2. move()
 
 
-3. is_pacman_in_range()
+#### 3. is_pacman_in_range()
 
 
-4. attack():
+#### 4. attack():
 This function checks if a pacman is within the ghost's attack range using the is_pacman_in_range method that returns a boolean. If it returns true, then calls the attack method
 from Map class, otherwise returns false. 
 
@@ -73,7 +80,7 @@ from Map class, otherwise returns false.
       
 
 ### Map Class
-1. move(String name, Location loc, Type type)  
+#### 1. move(String name, Location loc, Type type)  
 This function takes in three arguments: a String, a Location, and a Type. This moves the object specified by name (String) 
    to the Location specified by loc. This returns true on success, and false on failure. This a helper method to Pacman's 
    and Ghost's move functions. 
@@ -84,13 +91,13 @@ This function takes in three arguments: a String, a Location, and a Type. This m
       and checking the accuracy of the return value when a call to this function is made.   
 
 
-2. getLoc(Location loc)
+#### 2. getLoc(Location loc)
 
 
-3. attack(String name)
+#### 3. attack(String name)
 
 
-4. eatCookie(String Name):
+#### 4. eatCookie(String Name):
 This method is called by the pacman object if a cookie is in pacman's location. If the pacman successfully consumes the cookie, it updates the map to show that the cookie has been consumed. 
 
    - JUnit TestMapEatCookie:
