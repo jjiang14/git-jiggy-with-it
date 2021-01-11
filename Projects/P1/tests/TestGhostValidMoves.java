@@ -8,9 +8,6 @@ public class TestGhostValidMoves extends TestCase {
 	
 	/* Testing get_valid_moves when a GHOST has zero adjacent WALLs */
 	public void testGhostValidMoves_0Walls() throws FileNotFoundException {
-		/* Assuming that getLoc in Map class is correctly implemented */
-		// TODO: add Map-getLoc() code once available or test more rigorously
-
 		/* creating test map */
 		Map map_0Walls = new Map(3);
 		
@@ -41,18 +38,6 @@ public class TestGhostValidMoves extends TestCase {
 		List<Location> returnedList = ghost_0Walls.get_valid_moves();
 		Collections.sort(locList);
 		Collections.sort(returnedList);
-
-		assertTrue(returnedList.size() == 8);
-		/* printing out sorted locList */
-		for (Location loc:locList) {
-			System.out.println(loc);
-		}
-		System.out.println("Printing returnedList");
-		/* printing out sorted returnedList */
-		for (Location loc:returnedList) {
-			System.out.println(loc);
-		}
-		System.out.println();
 
 		assertEquals(8, returnedList.size());
 		assertTrue(locList.equals(returnedList));
@@ -95,7 +80,7 @@ public class TestGhostValidMoves extends TestCase {
 		Collections.sort(locList);
 		Collections.sort(returnedList);
 		
-		assertTrue(returnedList.size() == 1);
+		assertEquals(1, returnedList.size());
 		assertTrue(locList.equals(returnedList));
 
 		return;
@@ -144,7 +129,7 @@ public class TestGhostValidMoves extends TestCase {
 		Collections.sort(locList);
 		Collections.sort(returnedList);
 		
-		assertTrue(returnedList.size() == 5);
+		assertEquals(5, returnedList.size());
 		assertTrue(locList.equals(returnedList));
 
 		return;
@@ -185,7 +170,7 @@ public class TestGhostValidMoves extends TestCase {
 		Collections.sort(locList);
 		Collections.sort(returnedList);
 		
-		assertTrue(returnedList.size() == 5);
+		assertEquals(5, returnedList.size());
 		assertTrue(locList.equals(returnedList));
 
 		return;
