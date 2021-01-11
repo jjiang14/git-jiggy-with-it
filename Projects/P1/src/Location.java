@@ -1,4 +1,4 @@
-class Location {
+class Location implements Comparable<Location> {
 	public int x;
 	public int y;
 	
@@ -14,7 +14,8 @@ class Location {
 	public Location unshift(Location other) {
 		return new Location(other.x - x, other.y - y);
 	}
- @Override
+	
+	@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Location)) return false;
@@ -29,8 +30,29 @@ class Location {
         return result;
     }
 
+    @Override
+	public int compareTo(Location loc) {
+		if (this.x < loc.x) {
+			return -1;
+		} else if (this.x > loc.x) {
+			return 1;
+		}
+		/* this.x == loc.x */
+
+		if (this.y < loc.y) {
+			return -1;
+		} else if (this.y > loc.y) {
+			return 1;
+		}
+		/* this.y == loc.y */
+		return 0;
+	}
 
 
 
+	@Override 
 
+	public String toString() {
+		return "Location x=" + this.x + " y=" + this.y;
+	}
 }

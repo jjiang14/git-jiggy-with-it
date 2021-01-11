@@ -1,7 +1,7 @@
 import junit.framework.*;
-import java.awt.Color;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class TestGhostValidMoves extends TestCase {
 	
@@ -23,7 +23,6 @@ public class TestGhostValidMoves extends TestCase {
 		for (int row = 0; row < 3; row++) { 
 			for (int col = 0; col < 3; col++) {
 				Location loc = new Location(row, col);
-				locList.add(loc);
 				
 				/* setting ghost */
 				if (row == 1 && col == 1) {
@@ -33,14 +32,28 @@ public class TestGhostValidMoves extends TestCase {
 				/* using WallComponent because get_valid_moves is setup to check the 
 				 * Map.Type at all surrounding locations of an object */
 				map_0Walls.add("empty", loc, new WallComponent(row, col, 20), Map.Type.EMPTY);
-				
+				locList.add(loc);
 			}
 			
 		}
 
 		ArrayList<Location> returnedList = ghost_0Walls.get_valid_moves();
-		
+		Collections.sort(locList);
+		Collections.sort(returnedList);
+
 		assertTrue(returnedList.size() == 8);
+		/* printing out sorted locList */
+		for (Location loc:locList) {
+			System.out.println(loc);
+		}
+		System.out.println("Printing returnedList");
+		/* printing out sorted returnedList */
+		for (Location loc:returnedList) {
+			System.out.println(loc);
+		}
+		System.out.println();
+
+		assertEquals(8, returnedList.size());
 		assertTrue(locList.equals(returnedList));
 		
 		return;
@@ -78,6 +91,8 @@ public class TestGhostValidMoves extends TestCase {
 		}
 
 		ArrayList<Location> returnedList = ghost_7Walls.get_valid_moves();
+		Collections.sort(locList);
+		Collections.sort(returnedList);
 		
 		assertTrue(returnedList.size() == 1);
 		assertTrue(locList.equals(returnedList));
@@ -125,6 +140,8 @@ public class TestGhostValidMoves extends TestCase {
 		}
 
 		ArrayList<Location> returnedList = ghost_3ghost1Pacman.get_valid_moves();
+		Collections.sort(locList);
+		Collections.sort(returnedList);
 		
 		assertTrue(returnedList.size() == 5);
 		assertTrue(locList.equals(returnedList));
@@ -164,6 +181,8 @@ public class TestGhostValidMoves extends TestCase {
 		}
 
 		ArrayList<Location> returnedList = ghost_3ghost5cookie.get_valid_moves();
+		Collections.sort(locList);
+		Collections.sort(returnedList);
 		
 		assertTrue(returnedList.size() == 5);
 		assertTrue(locList.equals(returnedList));
