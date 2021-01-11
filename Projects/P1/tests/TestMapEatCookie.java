@@ -17,7 +17,7 @@ public class TestMapEatCookie {
 		testMap.add("pacman", pacmanLoc, pacmanComp, Map.Type.PACMAN);
 		testMap.add("tok_x1_y1", cookieLoc, cookie, Map.Type.COOKIE);
 
-		assertEquals(testMap.eatCookie("pacman"));
+		assertEquals(testMap.eatCookie("pacman").equals(cookie));
 	}
 
 	// test when there is no cookie
