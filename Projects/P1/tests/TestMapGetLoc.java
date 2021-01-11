@@ -3,7 +3,7 @@ import java.awt.Color;
 import java.io.*;
 
 
-public class TestMapGetLoc {
+public class TestMapGetLoc extends TestCase {
 	
 	public void testMapGetLoc() {
 		return null;
