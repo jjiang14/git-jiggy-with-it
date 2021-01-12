@@ -74,7 +74,6 @@ This function takes in no arguments and returns an arraylist of Locations that r
   ```
 - **Test Description**: assumes PacMan.get_valid_moves() works properly. Creates several test maps with pacman and varying numbers of walls, cookies, and ghosts. Checks to see if the location of the pacman after `move()` is the same as the first value returned by `get_valid_moves()` and that the location on the map that pacman should be in has been updated to include pacman.
  
-  
 #### is_ghost_in_range()
 - **Type**: `() -> Bool`
 - **Description**: This method looks at all of PacMan's adjacent grid spaces (including diagonal grid spaces) and checks if a Ghost is present. If a Ghost is present in any adjacent grid space this method returns true, otherwise it returns false.
@@ -84,6 +83,7 @@ This function takes in no arguments and returns an arraylist of Locations that r
   //pacman at location (9,12)
   pacman.is_ghost_in_range() -> true
   ```
+- **Test Description**: Creates a map with PacMan and and over time adds Ghosts to it. Checks that when no Ghosts are on the map the is_ghost_in_range() method returns false. When there is a Ghost that is on the map but not adjacent to PacMan's current location it checks that the is_ghost_in_range() method returns false. Finally when there is a Ghost on the map that is adjacent to PacMan's location it checks that the is_ghost_in_range() method returns true.
 
 #### consume()
 - **Type**: `() -> JComponent`
@@ -121,7 +121,6 @@ This function takes in no arguments and returns an arraylist of Locations that r
   ```
 - **Test Description**: assumes Ghost.get_valid_moves() works properly. Creates several test maps with at least one ghost and varying numbers of walls, cookies, and pacman (at most one pacman). Checks to see if the location of the ghosts after `move()` is the same as the first value returned by `get_valid_moves()` for each ghost and that the location on the map that each ghost should be in has been updated to include ghost.
 
-
 #### is_pacman_in_range()
 - **Type**: `() -> Bool`
 - **Description**: This method looks at all of a Ghost's adjacent grid spaces (including diagonal grid spaces) and checks if PacMan is present. If PacMan is present in any adjacent grid space this method returns true, otherwise it returns false.
@@ -131,6 +130,7 @@ This function takes in no arguments and returns an arraylist of Locations that r
   //pacman at location (9,12)
   ghost.is_pacman_in_range() -> true
   ```
+- **Test Description**: Creates a map with PacMan and over time adds Ghosts to it. When there is a Ghost that is on the map but not adjacent to PacMan's current location it checks that the is_pacman_in_range() method returns false. Next, when there is a Ghost on the map that is adjacent to PacMan's location it checks that the is_pacman_in_range() method returns true.
 
 #### attack()
 - **Type**: `() -> Bool`
@@ -178,6 +178,7 @@ This function takes in three arguments: a String, a Location, and a Type. This m
   //pacman at location (9,12)
   Map.attack("clyde") -> true
   ```
+- **Test Description**: Due to the design of the Map.attack() and Ghost.attack() methods, Map.attack() is only called by the Ghost.attack() method when PacMan is detected to be in attack range of a Ghost. This means that Map.attack() doesn't need to be tested for edge cases where pacman is too far away to be attacked, since it will only be called when PacMan is in range. To start the test creates a map with PacMan and one Ghost named Gerald that is adjacent to PacMan. Then, Map.attack("Gerald") is called manually (to simulate the Ghost class calling Ghost.attack() which would in turn call Map.attack("Gerald")). The test checks that the Ghost is moved to PacMan's coordinates and the method returns true. In the next test Map.attack("Ruford") is called, with the result being checked as false. This is because we fed an invalid name to the method, since a Ghost named Ruford was never created or added to the map.
 
 #### eatCookie(String Name)
 - **Type**: `(String name) -> JComponent`
