@@ -15,11 +15,10 @@
       + [is_pacman_in_range()](#is_pacman_in_range)
       + [attack()](#attack)
    * [Map Class](#map-class)
-      <!-- Map code links do not work -->
-      + [move(String name, Location loc, Type type)](move%28String-name,-Location-loc,-Type-type%29)
-      + [getLoc(Location loc)](getLoc%28Location-loc%29)
-      + [attack(String name)](attack%28String-name%29)
-      + [eatCookie(String Name)](eatCookie%28String-Name%29)
+      + [move(String name, Location loc, Type type)](#move-string-name-location-loc-type-type)
+      + [getLoc(Location loc)](#getloc-location-loc)
+      + [attack(String name)](#attack-string-name)
+      + [eatCookie(String Name)](#eatcookie-string-name)
 
 ## Team Members
 * Daniel Kyung
@@ -55,12 +54,19 @@ java -cp "src/" StartMenu
 -->
 
 #### get_valid_moves()
-This function takes in no arguments and returns an arraylist of Locations that represent valid moves that Pacman is 
-   able to make given his current location. If there are no valid moves an empty arraylist is returned.
-   - JUnit TestPacManValidMoves:  
-     Pacman's valid moves include - moving into a Location with a COOKIE or a Location that is EMPTY. Testing 
-     included creating a map with different types (i.e. COOKIE, WALL, GHOST, EMPTY, PACMAN) and evaluating the 
-     returned arraylist when a call to this function was made. 
+- **Type**: `() -> ArrayList<Location>`
+- **Description**: This function takes in no arguments and returns an arraylist of Locations that represent valid moves that Pacman is
+  able to make given his current location.
+- **Returns**: `ArrayList<Location>` of possible valid moves (including diagonal movement). If there are no valid moves an empty arraylist is returned.
+- **Example**:
+ ```java
+  //pacman at location (9,11)
+  pacman.get_valid_moves() -> {(9,12), (10,11), (10,12)}
+  ```
+- **Test Description**:  
+  Pacman's valid moves include - moving into a Location with a COOKIE or a Location that is EMPTY. Testing
+  included creating a map with different types (i.e. COOKIE, WALL, GHOST, EMPTY, PACMAN) and evaluating the
+  returned arraylist when a call to this function was made.
 
 #### move()
 - **Type**: `() -> Bool`
@@ -99,15 +105,21 @@ This function takes in no arguments and returns an arraylist of Locations that r
 
 ### Ghost Class
 #### get_valid_moves()
-This function takes in no arguments and returns an arraylist of Locations that represent valid moves that a Ghost is
-   able to make given their current location. If there are no valid moves an empty arraylist is returned.
+- **Type**: `() -> ArrayList<Location>`
+- **Description**: This function takes in no arguments and returns an arraylist of Locations that represent valid moves that a Ghost is
+  able to make given their current location.
+- **Returns**: `ArrayList<Location>` of possible valid moves (including diagonal movement). If there are no valid moves an empty arraylist is returned.
+- **Example**:
+  ```java
+  //ghost at location (9,11)
+  ghost.get_valid_moves() -> {(9,12), (10,11), (10,12)}
+  ```
+- **Test Description**: <sup>*</sup>  
+  A Ghost's valid moves include - moving into a Location with a COOKIE or a Location that is EMPTY or a Location
+  containing PACMAN. Testing included creating a map with different types (i.e. COOKIE, WALL, GHOST, EMPTY, PACMAN)
+  and evaluating the returned arraylist when a call to this function was made.
 
-    - JUnit TestGhostValidMoves:<sup>*</sup>  
-      A Ghost's valid moves include - moving into a Location with a COOKIE or a Location that is EMPTY or a Location
-      containing Pacman. Testing included creating a map with different types (i.e. COOKIE, WALL, GHOST, EMPTY, PACMAN) 
-      and evaluating the returned arraylist when a call to this function was made.  
-
-        <sup>*</sup>Note: Only one ghost can occupy any one Location at any given time. 
+  <sup>*</sup>Note: Only one ghost can occupy any one Location at any given time.
 
 #### move()
 - **Type**: `() -> Bool`
@@ -145,18 +157,24 @@ This function takes in no arguments and returns an arraylist of Locations that r
       This first tests a successful attack where a pacman is within a ghost's attack range, which would return it calling attack from Map class and return true. Then also tests an no-attack where the pacman is not within a ghost's attack range, which would return false and not call the attack method from Map class.    
  
 ### Map Class
-#### move(String name, Location loc, Type type)  
-This function takes in three arguments: a String, a Location, and a Type. This moves the object specified by name (String) 
-   to the Location specified by loc. This returns true on success, and false on failure. This a helper method to Pacman's 
-   and Ghost's move functions. 
+#### move (String name, Location loc, Type type)  
+- **Type**: `(String name, Location loc, Type type) -> Bool`
+- **Description**: This function takes in three arguments: a String, a Location, and a Type. This moves the object specified by name (String)
+  to the Location specified by loc. This a helper method to Pacman's
+  and Ghost's move functions.
+- **Returns**: `true` if an object succesfully moved to its new location, and `false` otherwise.
+- **Example**:
+   ```java
+  //pacman at location (2,4)
+  map.move("pacman", new Location (2,4), Map.Type.PACMAN) -> true
+  ```
+- **Test Description**:  
+  JUnit test cases were created with the assumption that valid arguments will be passed in from Pacman's and Ghost's call
+  to this function. Testing included creating a map with different types (i.e. COOKIE, WALL, GHOST, EMPTY, PACMAN)
+  and checking the accuracy of the return value when a call to this function is made.  
 
-    - JUnit TestMapMove:  
-    Test cases were created with the assumption that valid arguments will be passed in from Pacman's and Ghost's call 
-      to this function. Testing included creating a map with different types (i.e. COOKIE, WALL, GHOST, EMPTY, PACMAN)
-      and checking the accuracy of the return value when a call to this function is made.   
 
-
-#### getLoc(Location loc)
+#### getLoc (Location loc)  
 - **Type**: `(Location loc) -> HashSet<Type>`
 - **Description**: returns Type of what is currently at the loc argument (Empty, Pacman, Cookie, Ghost, Wall)
 - **Returns**: `HashSet<Type>` containing Type of all things at loc argument; a `HashSet<Type>` containing only `Map.Type.EMPTY` if nothing is at loc or containing only `Map.Type.WALL` if a wall is at loc
@@ -169,7 +187,7 @@ This function takes in three arguments: a String, a Location, and a Type. This m
   ```
 - **Test Description**: sets up a 3x3 test map with ghosts, walls, cookies, and pacman then tests to see if `getLoc` returns a set that matches the constructed set
 
-#### attack(String name)
+#### attack (String name)  
 - **Type**: `(String name) -> Bool`
 - **Description**: This method is called by the Ghost's attack method, meaning this method will only be called when PacMan is in range of a Ghost. When called this method will move the Ghost to PacMan's coordinates, then check to make sure both the Ghost and PacMan are positioned at the same grid space. If the Ghost and PacMan are at the same grid space the gameOver variable will be set to true, the display will be updated, and the method will return true. If the Ghost and PacMan are not at the same grid space this method will return false.
 - **Examples**:
@@ -180,7 +198,7 @@ This function takes in three arguments: a String, a Location, and a Type. This m
   ```
 - **Test Description**: Due to the design of the Map.attack() and Ghost.attack() methods, Map.attack() is only called by the Ghost.attack() method when PacMan is detected to be in attack range of a Ghost. This means that Map.attack() doesn't need to be tested for edge cases where pacman is too far away to be attacked, since it will only be called when PacMan is in range. To start the test creates a map with PacMan and one Ghost named Gerald that is adjacent to PacMan. Then, Map.attack("Gerald") is called manually (to simulate the Ghost class calling Ghost.attack() which would in turn call Map.attack("Gerald")). The test checks that the Ghost is moved to PacMan's coordinates and the method returns true. In the next test Map.attack("Ruford") is called, with the result being checked as false. This is because we fed an invalid name to the method, since a Ghost named Ruford was never created or added to the map.
 
-#### eatCookie(String Name)
+#### eatCookie (String Name)  
 - **Type**: `(String name) -> JComponent`
 - **Description**: This method is called by the pacman object if a cookie is in pacman's location. If the pacman successfully consumes the cookie, it updates the map to show that the cookie has been consumed.
 - **Examples**:
