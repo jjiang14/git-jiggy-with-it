@@ -72,7 +72,8 @@ This function takes in no arguments and returns an arraylist of Locations that r
   pacman.move() -> true
   pacman.myLoc ∈ {(1,2), (2,1), (2,2)}
   ```
-- **Test Description**:
+- **Test Description**: assumes PacMan.get_valid_moves() works properly. Creates several test maps with pacman and varying numbers of walls, cookies, and ghosts. Checks to see if the location of the pacman after `move()` is the same as the first value returned by `get_valid_moves()` and that the location on the map that pacman should be in has been updated to include pacman.
+ 
   
 #### is_ghost_in_range()
 - **Type**: `() -> Bool`
@@ -118,7 +119,8 @@ This function takes in no arguments and returns an arraylist of Locations that r
   ghost.move() -> true
   ghost.myLoc ∈ {(1,2), (2,1), (2,2)}
   ```
-- **Test Description**:
+- **Test Description**: assumes Ghost.get_valid_moves() works properly. Creates several test maps with at least one ghost and varying numbers of walls, cookies, and pacman (at most one pacman). Checks to see if the location of the ghosts after `move()` is the same as the first value returned by `get_valid_moves()` for each ghost and that the location on the map that each ghost should be in has been updated to include ghost.
+
 
 #### is_pacman_in_range()
 - **Type**: `() -> Bool`
@@ -165,7 +167,7 @@ This function takes in three arguments: a String, a Location, and a Type. This m
   map.getLoc(new Location (1,1)) -> {Map.Type.PACMAN, Map.Type.GHOST}
   map.getLoc(new Location (2,1)) -> {Map.Type.WALL}
   ```
-- **Test Description**:
+- **Test Description**: sets up a 3x3 test map with ghosts, walls, cookies, and pacman then tests to see if `getLoc` returns a set that matches the constructed set
 
 #### attack(String name)
 - **Type**: `(String name) -> Bool`
