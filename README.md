@@ -100,7 +100,7 @@ java -cp "src/" StartMenu
   //cookie NOT at location (9,12)
   pacman.consume() -> null
   ```
-   - JUnit TestConsume:
+- **Test Description**:  
       The first test checks if pacman is able to successfully able to consume a cookie in the pacman's location. After setting the cookie and pacman in the same location, the consume method should return the cookie component. The second test checks if there is no cookie, then consume method should return null.     
 
 ### Ghost Class
@@ -153,7 +153,7 @@ java -cp "src/" StartMenu
   //pacman at location (9,12)
   ghost.attack() -> true
   ```
-  - JUnit TestAttack:
+- **Test Description**:  
       This first tests a successful attack where a pacman is within a ghost's attack range, which would return it calling attack from Map class and return true. Then also tests an no-attack where the pacman is not within a ghost's attack range, which would return false and not call the attack method from Map class.    
  
 ### Map Class
@@ -207,7 +207,7 @@ java -cp "src/" StartMenu
  //pacman at location (4,6)
  Map.eatCookie("pacman") -> null
   ```
-    - JUnit TestMapEatCookie:
+- **Test Description**:  
        This first tests a scenario where a cookie and pacman in same location and calls the eatCookie method which should return the cookie component and update the current pacman's map. Then it also tests when a cookie and pacman are in different locations and calls the eatCookie method which should only return null.
 
  
