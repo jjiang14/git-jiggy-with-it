@@ -6,7 +6,8 @@ name: PacMan Workflow
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    # TODO: delete FTR-actions before merge to main
+    branches: [ main, FTR-actions ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -15,7 +16,8 @@ on:
 jobs:
   # This workflow contains jobs to run JUnit test code for a simple PacMan Game implementation
 
-  testPacManValidMoves:
+  # NOTE TO SELF: jobs.compile is an example of jobs.<job_id>
+  compile:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     container: openjdk
@@ -26,12 +28,30 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a set of commands using the runners shell
-      - name: Compile The Test
+      - name: Compile All Source and Test Files
         run: |
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
+
+  testPacManValidMoves:
+    # creates dependency on jobs.compile
+    needs: compile
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    container: openjdk
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a set of commands using the runners shell
+      - name: Run JUnit TestPacManValidMoves
+        run: |
           java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManValidMoves
 
   testGhostValidMoves:
+    # creates dependency on jobs.compile
+    needs: compile
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     container: openjdk
@@ -42,12 +62,13 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a set of commands using the runners shell
-      - name: Compile The Test
+      - name: Run JUnit TestGhostValidMoves
         run: |
-          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
           java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostValidMoves
 
   testMapMove:
+    # creates dependency on jobs.compile
+    needs: compile
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     container: openjdk
@@ -58,7 +79,6 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a set of commands using the runners shell
-      - name: Compile The Test
+      - name: Run JUnit TestMapMove
         run: |
-          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
           java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapMove
