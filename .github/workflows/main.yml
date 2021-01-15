@@ -16,7 +16,6 @@ on:
 jobs:
   # This workflow contains jobs to run JUnit test code for a simple PacMan Game implementation
   # NOTE TO SELF: jobs.compile is an example of jobs.<job_id>
-# This is a basic workflow to help you get started with Actions
 
   testGhostInRange:
       # The type of runner that the job will run on
