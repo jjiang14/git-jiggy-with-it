@@ -94,6 +94,9 @@ public class Map {
 	// wallSet returned if there is a wall 
 	public HashSet<Type> getLoc(Location loc) {
 		
+		if (this.dim <= loc.x || this.dim <= loc.y) {
+			return this.wallSet;
+		}
 		if (this.field.containsKey(loc)) {
 			if (this.field.get(loc).contains(Type.WALL)) {
 				return this.wallSet;
