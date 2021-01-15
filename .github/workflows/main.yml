@@ -18,62 +18,62 @@ jobs:
   # NOTE TO SELF: jobs.compile is an example of jobs.<job_id>
 # This is a basic workflow to help you get started with Actions
 
-testGhostInRange:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-    container: openjdk
-    defaults:
-      run:
-        working-directory: Projects/P1
+  testGhostInRange:
+      # The type of runner that the job will run on
+      runs-on: ubuntu-latest
+      container: openjdk
+      defaults:
+        run:
+          working-directory: Projects/P1
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      # Steps represent a sequence of tasks that will be executed as part of the job
+      steps:
+        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+        - uses: actions/checkout@v2
 
-      - name: Compile All Source and Test Files
-        run: |
-          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
-      - name: Run JUnit TestGhostInRange
-        run: |
-          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostInRange
+        - name: Compile All Source and Test Files
+          run: |
+            javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
+        - name: Run JUnit TestGhostInRange
+          run: |
+            java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostInRange
 
-testPacManInRange:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-    container: openjdk
-    defaults:
-      run:
-        working-directory: Projects/P1
+  testPacManInRange:
+      # The type of runner that the job will run on
+      runs-on: ubuntu-latest
+      container: openjdk
+      defaults:
+        run:
+          working-directory: Projects/P1
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      # Steps represent a sequence of tasks that will be executed as part of the job
+      steps:
+        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+        - uses: actions/checkout@v2
 
-      - name: Compile All Source and Test Files
-        run: |
-          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
-      - name: Run JUnit TestPacManInRange
-        run: |
-          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManInRange
-    
-testMapAttack:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-    container: openjdk
-    defaults:
-      run:
-        working-directory: Projects/P1
+        - name: Compile All Source and Test Files
+          run: |
+            javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
+        - name: Run JUnit TestPacManInRange
+          run: |
+            java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManInRange
+      
+  testMapAttack:
+      # The type of runner that the job will run on
+      runs-on: ubuntu-latest
+      container: openjdk
+      defaults:
+        run:
+          working-directory: Projects/P1
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      # Steps represent a sequence of tasks that will be executed as part of the job
+      steps:
+        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+        - uses: actions/checkout@v2
 
-      - name: Compile All Source and Test Files
-        run: |
-          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
-      - name: Run JUnit TestMapAttack
-        run: |
-          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapAttack
+        - name: Compile All Source and Test Files
+          run: |
+            javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
+        - name: Run JUnit TestMapAttack
+          run: |
+            java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapAttack
