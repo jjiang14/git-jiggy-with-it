@@ -66,7 +66,7 @@ public class Map{
 	public HashSet<Type> getLoc(Location loc) {
 		
 		if (this.dim <= loc.x || this.dim <= loc.y) {
-			return this.emptySet;
+			return this.wallSet;
 		}
 		if (this.field.containsKey(loc)) {
 			if (this.field.get(loc).contains(Type.WALL)) {
