@@ -38,6 +38,27 @@ jobs:
         run: |
           java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManValidMoves
 
+  testPacManMove:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    container: openjdk
+    defaults:
+      run:
+        working-directory: Projects/P1
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Compile All Source and Test Files
+        run: |
+          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
+
+      -name: Run JUnit TestPacManMove
+        run: |
+          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManMove
+
   testGhostValidMoves:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -59,6 +80,27 @@ jobs:
         run: |
           java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostValidMoves
 
+  testGhostMove:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    container: openjdk
+    defaults:
+      run:
+        working-directory: Projects/P1
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Compile All Source and Test Files
+        run: |
+          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
+
+      -name: Run JUnit TestGhostMove
+        run: |
+          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostMove
+
   testMapMove:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -79,6 +121,27 @@ jobs:
       - name: Run JUnit TestMapMove
         run: |
           java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapMove
+
+  testMapGetLoc:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    container: openjdk
+    defaults:
+      run:
+        working-directory: Projects/P1
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Compile All Source and Test Files
+        run: |
+          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
+
+      - name: Run JUnit TestGetLoc
+        run: |
+          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGetLoc
 
   testAttack:
     # The type of runner that the job will run on
