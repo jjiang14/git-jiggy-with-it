@@ -139,9 +139,9 @@ jobs:
         run: |
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
 
-      - name: Run JUnit TestGetLoc
+      - name: Run JUnit TestMapGetLoc
         run: |
-          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGetLoc
+          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapGetLoc
 
   testAttack:
     # The type of runner that the job will run on
