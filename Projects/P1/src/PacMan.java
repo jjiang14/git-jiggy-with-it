@@ -97,11 +97,11 @@ public class PacMan{
 	public boolean move() {
 		ArrayList<Location> move_list = this.get_valid_moves();
 		if(move_list.size() < 1) {
-			return false;
+			return true;
 		}
-		this.myLoc = move_list.get(0);
 		myMap.move(this.myName, this.myLoc, Map.Type.PACMAN);
-		return true;
+		this.myLoc = move_list.get(1);
+		return false;
 	}
 
 	public boolean is_ghost_in_range() { 
