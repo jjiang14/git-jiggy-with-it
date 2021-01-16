@@ -57,7 +57,7 @@ public class Map {
 	 * therefore no validation check for loc is required */
 	public boolean move(String name, Location loc, Type type) {
 		
-		if (!locations.containsKey(name)) {
+		if (locations.containsKey(name)) {
 			return false;						
 		}
 		
@@ -77,7 +77,7 @@ public class Map {
 		
 		/* updating components */
 		JComponent currComp = components.get(name);
-		currComp.setLocation(loc.x, loc.y);
+		currComp.setLocation(loc.x, loc.x);
 		
 		/* updating field */
 		field.get(currLoc).remove(type);
