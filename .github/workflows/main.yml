@@ -7,7 +7,7 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
     # TODO: delete FTR-actions before merge to main
-    branches: [main, FTR-actions]
+    branches: [main, FTR-sabotage, sabotage-Lydia]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
