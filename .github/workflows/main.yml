@@ -97,7 +97,7 @@ jobs:
         run: |
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/*.java
 
-      -name: Run JUnit TestGhostMove
+      - name: Run JUnit TestGhostMove
         run: |
           java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostMove
 
