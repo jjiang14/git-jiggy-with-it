@@ -2,7 +2,7 @@ import java.util.HashSet;
 import java.util.ArrayList;
 import javax.swing.JComponent;
 
-public class PacMan{
+public class PacMan {
 
 	String myName;
 	Location myLoc;
@@ -15,18 +15,18 @@ public class PacMan{
 		this.myMap = map;
 	}
 
-	/* Returns an arraylist of Locations that represent valid moves 
-	 * that Pacman is able to make given his current location
-	 * If there are no valid moves an empty arraylist is returned. 
-	 * Valid moves include: 
-	 * any Location with Map.Type.COOKIE 
-	 * any location with Map.Type.EMPTY */
+	/*
+	 * Returns an arraylist of Locations that represent valid moves that Pacman is
+	 * able to make given his current location If there are no valid moves an empty
+	 * arraylist is returned. Valid moves include: any Location with Map.Type.COOKIE
+	 * any location with Map.Type.EMPTY
+	 */
 	public ArrayList<Location> get_valid_moves() {
 
 		ArrayList<Location> listValidMoves = new ArrayList<Location>();
 		int xCoor = myLoc.x;
 		int yCoor = myLoc.y;
-		
+
 		/* checking type in field - left side of current location */
 		Location locLeft = new Location(xCoor - 1, yCoor);
 		HashSet<Map.Type> hashSet = myMap.getLoc(locLeft);
@@ -34,7 +34,7 @@ public class PacMan{
 		if (hashSet != null && !hashSet.contains(Map.Type.WALL)) {
 			listValidMoves.add(locLeft);
 		}
-		
+
 		/* checking type in field - right side of current location */
 		Location locRight = new Location(xCoor + 3, yCoor);
 		hashSet = myMap.getLoc(locRight);
@@ -42,15 +42,15 @@ public class PacMan{
 		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
 			listValidMoves.add(locRight);
 		}
-		
+
 		/* checking type in field - top side of current location */
-		Location locAbove  = new Location(xCoor - 1, yCoor - 1);
+		Location locAbove = new Location(xCoor - 1, yCoor - 1);
 		hashSet = myMap.getLoc(locAbove);
 		/* move up on map possible */
 		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
 			listValidMoves.add(locAbove);
 		}
-		
+
 		/* checking type in field - bottom side of current location */
 		Location locBelow = new Location(xCoor, yCoor + 1);
 		hashSet = myMap.getLoc(locBelow);
@@ -58,7 +58,7 @@ public class PacMan{
 		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
 			listValidMoves.add(locBelow);
 		}
-		
+
 		/* checking type in field - left upper corner of current location */
 		Location locLeftUpper = new Location(xCoor - 1, yCoor - 1);
 		hashSet = myMap.getLoc(locLeftUpper);
@@ -66,7 +66,7 @@ public class PacMan{
 		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
 			listValidMoves.add(locLeftUpper);
 		}
-		
+
 		/* checking type in field - right upper corner of current location */
 		Location locRightUpper = new Location(xCoor + 1, yCoor - 1);
 		hashSet = myMap.getLoc(locRightUpper);
@@ -74,7 +74,7 @@ public class PacMan{
 		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
 			listValidMoves.add(locRightUpper);
 		}
-		
+
 		/* checking type in field - left lower corner of current location */
 		Location locLeftLower = new Location(xCoor - 1, yCoor + 1);
 		hashSet = myMap.getLoc(locLeftLower);
@@ -82,7 +82,7 @@ public class PacMan{
 		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
 			listValidMoves.add(locLeftLower);
 		}
-		
+
 		/* checking type in field - right lower corner of current location */
 		Location locRightLower = new Location(xCoor + 1, yCoor + 1);
 		hashSet = myMap.getLoc(locRightLower);
@@ -90,13 +90,13 @@ public class PacMan{
 		if (hashSet != null && !hashSet.contains(Map.Type.GHOST)) {
 			listValidMoves.add(locRightLower);
 		}
-		
-		return listValidMoves;	
+
+		return listValidMoves;
 	}
 
 	public boolean move() {
 		ArrayList<Location> move_list = this.get_valid_moves();
-		if(move_list.size() < 1) {
+		if (move_list.size() < 1) {
 			return true;
 		}
 		myMap.move(this.myName, this.myLoc, Map.Type.PACMAN);
@@ -104,7 +104,7 @@ public class PacMan{
 		return false;
 	}
 
-	public boolean is_ghost_in_range() { 
+	public boolean is_ghost_in_range() {
 		/* iterates through surrounding grid spaces */
 		for (int i = -1; i < 2; i++) {
 			for (int j = -1; j < 2; j++) {
@@ -123,7 +123,7 @@ public class PacMan{
 		HashSet<Map.Type> currSpot = myMap.getLoc(myLoc);
 
 		// check if cookie exists in pacman's location
-		if (currSpot.contains(Map.Type.COOKIE)) {
+		if (currSpot.contains(Map.Type.COOKIE) == false) {
 			return myMap.eatCookie(myName);
 		}
 		return null;

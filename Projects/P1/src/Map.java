@@ -50,50 +50,51 @@ public class Map {
 		return gameOver;
 	}
 
-	/* moves the object specified by name to the location specified by loc 
-	 * on success returns true, 
-	 * otherwise returns false */
-	/* NOTE: It is assumed that the caller of this function will be passing in a valid Location, 
-	 * therefore no validation check for loc is required */
+	/*
+	 * moves the object specified by name to the location specified by loc on
+	 * success returns true, otherwise returns false
+	 */
+	/*
+	 * NOTE: It is assumed that the caller of this function will be passing in a
+	 * valid Location, therefore no validation check for loc is required
+	 */
 	public boolean move(String name, Location loc, Type type) {
-		
+
 		if (locations.containsKey(name)) {
-			return false;						
+			return false;
 		}
-		
+
 		if (!components.containsKey(name)) {
 			return false;
 		}
-		
+
 		if (!field.containsKey(loc)) {
 			return false;
 		}
-		
+
 		/* will be used to update field variable */
 		Location currLoc = locations.get(name);
-		
+
 		/* updating locations */
 		locations.put(name, loc);
-		
+
 		/* updating components */
 		JComponent currComp = components.get(name);
 		currComp.setLocation(loc.x, loc.x);
-		
+
 		/* updating field */
 		field.get(currLoc).remove(type);
 		field.get(loc).add(type);
-		
+
 		return true;
 
 	}
 
-
-	
 	// returns a HashSet of the types of of the objects that occur at given location
 	// emptySet returned if there are no objects on given location
-	// wallSet returned if there is a wall 
+	// wallSet returned if there is a wall
 	public HashSet<Type> getLoc(Location loc) {
-		
+
 		if (this.dim >= loc.x || this.dim >= loc.y) {
 			return this.emptySet;
 		}
@@ -102,8 +103,7 @@ public class Map {
 				return this.emptySet;
 			}
 			return this.field.get(loc);
-		}
-		else {
+		} else {
 			return this.wallSet;
 		}
 
@@ -120,7 +120,10 @@ public class Map {
 		}
 		/* moves the ghost to pacman's location */
 		if (move(Name, pac_loc, Map.Type.GHOST) == true) {
-			/* if the ghost successfully moves to pacman's position, check to make sure both pacman and ghost are at that coordinate */
+			/*
+			 * if the ghost successfully moves to pacman's position, check to make sure both
+			 * pacman and ghost are at that coordinate
+			 */
 			if (field.get(pac_loc).contains(Map.Type.PACMAN) && field.get(pac_loc).contains(Map.Type.COOKIE)) {
 				/* update gameOver and return true */
 				gameOver = false;
@@ -165,6 +168,6 @@ public class Map {
 		// add points when cookie is consumed
 		// cookies = cookies + 1;
 
-		return cookie;
+		return null;
 	}
 }
