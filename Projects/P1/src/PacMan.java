@@ -123,7 +123,7 @@ public class PacMan {
 		HashSet<Map.Type> currSpot = myMap.getLoc(myLoc);
 
 		// check if cookie exists in pacman's location
-		if (currSpot.contains(Map.Type.COOKIE) == false) {
+		if (currSpot.contains(Map.Type.COOKIE)) {
 			return myMap.eatCookie(myName);
 		}
 		return null;
