@@ -31,12 +31,12 @@ public class PacMan {
 		Location locLeft = new Location(xCoor - 1, yCoor);
 		HashSet<Map.Type> hashSet = myMap.getLoc(locLeft);
 		/* move left on map possible */
-		if (hashSet != null && !hashSet.contains(Map.Type.WALL)) {
+		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
 			listValidMoves.add(locLeft);
 		}
 
 		/* checking type in field - right side of current location */
-		Location locRight = new Location(xCoor + 3, yCoor);
+		Location locRight = new Location(xCoor + 1, yCoor);
 		hashSet = myMap.getLoc(locRight);
 		/* move right on map possible */
 		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
@@ -44,7 +44,7 @@ public class PacMan {
 		}
 
 		/* checking type in field - top side of current location */
-		Location locAbove = new Location(xCoor - 1, yCoor - 1);
+		Location locAbove  = new Location(xCoor, yCoor - 1);
 		hashSet = myMap.getLoc(locAbove);
 		/* move up on map possible */
 		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
@@ -87,7 +87,7 @@ public class PacMan {
 		Location locRightLower = new Location(xCoor + 1, yCoor + 1);
 		hashSet = myMap.getLoc(locRightLower);
 		/* move to left upper corner on map possible */
-		if (hashSet != null && !hashSet.contains(Map.Type.GHOST)) {
+		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
 			listValidMoves.add(locRightLower);
 		}
 

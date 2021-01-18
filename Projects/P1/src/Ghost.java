@@ -28,7 +28,7 @@ public class Ghost {
 		Location locLeft = new Location(xCoor - 1, yCoor);
 		HashSet<Map.Type> hashSet = myMap.getLoc(locLeft);
 		/* move left on map possible */
-		if (hashSet != null && !hashSet.contains(Map.Type.GHOST)) {
+		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
 			listValidMoves.add(locLeft);
 		}
 
@@ -41,7 +41,7 @@ public class Ghost {
 		}
 
 		/* checking type in field - top side of current location */
-		Location locAbove = new Location(xCoor, yCoor - 2);
+		Location locAbove = new Location(xCoor, yCoor - 1);
 		hashSet = myMap.getLoc(locAbove);
 		/* move up on map possible */
 		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
@@ -52,7 +52,7 @@ public class Ghost {
 		Location locBelow = new Location(xCoor, yCoor + 1);
 		hashSet = myMap.getLoc(locBelow);
 		/* move down on map possible */
-		if (hashSet != null && !hashSet.contains(Map.Type.WALL)) {
+		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
 			listValidMoves.add(locBelow);
 		}
 
