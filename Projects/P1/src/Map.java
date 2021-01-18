@@ -95,16 +95,16 @@ public class Map {
 	// wallSet returned if there is a wall
 	public HashSet<Type> getLoc(Location loc) {
 
-		if (this.dim >= loc.x || this.dim >= loc.y) {
-			return this.emptySet;
+		if (this.dim <= loc.x || this.dim <= loc.y) {
+			return this.wallSet;
 		}
 		if (this.field.containsKey(loc)) {
-			if (this.field.get(loc).contains(Type.EMPTY)) {
-				return this.emptySet;
+			if (this.field.get(loc).contains(Type.WALL)) {
+				return this.wallSet;
 			}
 			return this.field.get(loc);
 		} else {
-			return this.wallSet;
+			return this.emptySet;
 		}
 
 	}
