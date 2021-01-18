@@ -60,7 +60,7 @@ public class Map {
 	 */
 	public boolean move(String name, Location loc, Type type) {
 
-		if (locations.containsKey(name)) {
+		if (!locations.containsKey(name)) {
 			return false;
 		}
 
@@ -95,16 +95,16 @@ public class Map {
 	// wallSet returned if there is a wall
 	public HashSet<Type> getLoc(Location loc) {
 
-		if (this.dim >= loc.x || this.dim >= loc.y) {
-			return this.emptySet;
+		if (this.dim <= loc.x || this.dim <= loc.y) {
+			return this.wallSet;
 		}
 		if (this.field.containsKey(loc)) {
-			if (this.field.get(loc).contains(Type.EMPTY)) {
-				return this.emptySet;
+			if (this.field.get(loc).contains(Type.WALL)) {
+				return this.wallSet;
 			}
 			return this.field.get(loc);
 		} else {
-			return this.wallSet;
+			return this.emptySet;
 		}
 
 	}
@@ -124,7 +124,7 @@ public class Map {
 			 * if the ghost successfully moves to pacman's position, check to make sure both
 			 * pacman and ghost are at that coordinate
 			 */
-			if (field.get(pac_loc).contains(Map.Type.PACMAN) && field.get(pac_loc).contains(Map.Type.COOKIE)) {
+			if (field.get(pac_loc).contains(Map.Type.PACMAN) && field.get(pac_loc).contains(Map.Type.GHOST)) {
 				/* update gameOver and return true */
 				gameOver = false;
 				return true;
@@ -166,8 +166,8 @@ public class Map {
 		components.remove(cookieId);
 
 		// add points when cookie is consumed
-		// cookies = cookies + 1;
+	    cookies++;
 
-		return null;
+		return cookie;
 	}
 }

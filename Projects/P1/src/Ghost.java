@@ -28,7 +28,7 @@ public class Ghost {
 		Location locLeft = new Location(xCoor - 1, yCoor);
 		HashSet<Map.Type> hashSet = myMap.getLoc(locLeft);
 		/* move left on map possible */
-		if (hashSet != null && !hashSet.contains(Map.Type.GHOST)) {
+		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
 			listValidMoves.add(locLeft);
 		}
 
@@ -41,7 +41,7 @@ public class Ghost {
 		}
 
 		/* checking type in field - top side of current location */
-		Location locAbove = new Location(xCoor, yCoor - 2);
+		Location locAbove = new Location(xCoor, yCoor - 1);
 		hashSet = myMap.getLoc(locAbove);
 		/* move up on map possible */
 		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
@@ -52,7 +52,7 @@ public class Ghost {
 		Location locBelow = new Location(xCoor, yCoor + 1);
 		hashSet = myMap.getLoc(locBelow);
 		/* move down on map possible */
-		if (hashSet != null && !hashSet.contains(Map.Type.WALL)) {
+		if (hashSet != null && !hashSet.contains(Map.Type.WALL) && !hashSet.contains(Map.Type.GHOST)) {
 			listValidMoves.add(locBelow);
 		}
 
@@ -93,12 +93,12 @@ public class Ghost {
 
 	public boolean move() {
 		ArrayList<Location> move_list = this.get_valid_moves();
-		if (move_list.size() >= 1) {
+		if (move_list.size() < 1) {
 			return false;
 		}
+		this.myLoc = move_list.get(0);
 		myMap.move(this.myName, this.myLoc, Map.Type.GHOST);
-		this.myLoc = move_list.get(1);
-		return true;
+		return true;	
 	}
 
 	public boolean is_pacman_in_range() {
@@ -106,7 +106,7 @@ public class Ghost {
 		for (int i = -1; i < 2; i++) {
 			for (int j = -1; j < 2; j++) {
 				/* checks if Type PACMAN is present at that grid space */
-				if (myMap.getLoc(new Location(myLoc.x + i, myLoc.y + j)).contains(Map.Type.COOKIE)) {
+				if (myMap.getLoc(new Location(myLoc.x + i, myLoc.y + j)).contains(Map.Type.PACMAN)) {
 					return true;
 				}
 			}
@@ -117,9 +117,9 @@ public class Ghost {
 
 	public boolean attack() {
 		if (is_pacman_in_range()) {
-			return false;
+			return myMap.attack(myName);
 		}
 
-		return true;
+		return false;
 	}
 }
