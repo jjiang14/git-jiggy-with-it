@@ -60,7 +60,7 @@ public class Map {
 	 */
 	public boolean move(String name, Location loc, Type type) {
 
-		if (locations.containsKey(name)) {
+		if (!locations.containsKey(name)) {
 			return false;
 		}
 
