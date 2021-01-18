@@ -124,7 +124,7 @@ public class Map {
 			 * if the ghost successfully moves to pacman's position, check to make sure both
 			 * pacman and ghost are at that coordinate
 			 */
-			if (field.get(pac_loc).contains(Map.Type.PACMAN) && field.get(pac_loc).contains(Map.Type.COOKIE)) {
+			if (field.get(pac_loc).contains(Map.Type.PACMAN) && field.get(pac_loc).contains(Map.Type.GHOST)) {
 				/* update gameOver and return true */
 				gameOver = false;
 				return true;
